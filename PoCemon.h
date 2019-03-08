@@ -9,36 +9,36 @@
 class Pocemon : protected PocemonData
 {
 private:
-	PkmnId id;
-	std::string name;
-	int level;
+    PkmnId id;
+    std::string name;
+    int level;
 
-	Type type1;
-	Type type2;
+    Type type1;
+    Type type2;
 
-	int baseHp;
-	int baseAtk;
-	int baseDef;
-	int baseSpeed;
-	int baseSpAtk;
-	int baseSpDef;
+    int baseHp;
+    int baseAtk;
+    int baseDef;
+    int baseSpeed;
+    int baseSpAtk;
+    int baseSpDef;
 
-	int ivHp;
-	int ivAtk;
-	int ivDef;
-	int ivSpeed;
-	int ivSpAtk;
-	int ivSpDef;
+    int ivHp;
+    int ivAtk;
+    int ivDef;
+    int ivSpeed;
+    int ivSpAtk;
+    int ivSpDef;
 
-	int evHp;
-	int evAtk;
-	int evDef;
-	int evSpeed;
-	int evSpAtk;
-	int evSpDef;
+    int evHp;
+    int evAtk;
+    int evDef;
+    int evSpeed;
+    int evSpAtk;
+    int evSpDef;
 
 public:
-	Pocemon(const PkmnId selectedId, const int lvl);
+    Pocemon(const PkmnId selectedId, const int lvl);
 
 
 };

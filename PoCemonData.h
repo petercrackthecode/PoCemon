@@ -6,23 +6,23 @@
 
 class PocemonData
 {
-	// In the future, all these member variables will be changed to "proteced".
+    // In the future, all these member variables will be changed to "proteced".
 public:
-	std::string name;
-	Type type1;
-	Type type2;
+    std::string name;
+    Type type1;
+    Type type2;
 
-	int baseHp;
-	int baseAtk;
-	int baseDef;
-	int baseSpeed;
-	int baseSpAtk;
-	int baseSpDef;
+    int baseHp;
+    int baseAtk;
+    int baseDef;
+    int baseSpeed;
+    int baseSpAtk;
+    int baseSpDef;
 
-	// These will probably remain public:
-	const static PocemonData *allData;
-	static std::string getTypeName(Type type);
-	static PocemonData* defineAllPocemonData();
+    // These will probably remain public:
+    const static PocemonData *allData;
+    static std::string getTypeName(Type type);
+    static PocemonData* defineAllPocemonData();
 };
 
 
