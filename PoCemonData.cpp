@@ -1,6 +1,35 @@
 #include "PoCemonData.h"
 #include "PoCemon.h"
 
+PocemonData::PocemonData(std::string tempName, Type tempType1, Type tempType2,
+                         int tempBaseHp, int tempBaseAtk, int tempBaseDef,
+                         int tempBaseSpeed, int tempBaseSpAtk, int tempBaseSpDef)
+{
+    name = tempName;
+    type1 = tempType1;
+    type2 = tempType2;
+
+    baseHp = tempBaseHp;
+    baseAtk = tempBaseAtk;
+    baseDef = tempBaseDef;
+    baseSpeed = tempBaseSpeed;
+    baseSpAtk = tempBaseSpAtk;
+    baseSpDef = tempBaseSpDef;
+}
+
+//PocemonData::PocemonData()
+//{
+//    name = "";
+//    type1 = Type::None;
+//    type2 = Type::None;
+//
+//    baseHp = 0;
+//    baseAtk = 0;
+//    baseDef = 0;
+//    baseSpeed = 0;
+//    baseSpAtk = 0;
+//    baseSpDef = 0;
+//}
 
 std::string PocemonData::getTypeName(Type type)
 {
@@ -83,10 +112,10 @@ PocemonData* PocemonData::defineAllPocemonData()
         {"Raichu", Type::Electric, Type::None, 60, 90, 55, 100, 90, 80},
         {"Sandshrew", Type::Ground, Type::None, 50, 75, 85, 40, 30, 30},
         {"Sandslash", Type::Ground, Type::None, 75, 100, 110, 65, 55, 55},
-        {"Nidoran (female)", Type::Poison, Type::None, 55, 47, 52, 41, 40, 40},
+        {"Nidoran (f)", Type::Poison, Type::None, 55, 47, 52, 41, 40, 40},
         {"Nidorina", Type::Poison, Type::None, 70, 62, 67, 56, 55, 55},
         {"Nidoqueen", Type::Poison, Type::Ground, 90, 82, 87, 76, 75, 85},
-        {"Nidoran (male)", Type::Poison, Type::None, 46, 57, 40, 50, 40, 40},
+        {"Nidoran (m)", Type::Poison, Type::None, 46, 57, 40, 50, 40, 40},
         {"Nidorino", Type::Poison, Type::None, 61, 72, 57, 65, 55, 55},
         {"Nidoking", Type::Poison, Type::Ground, 81, 92, 77, 85, 75, 75},
         {"Clefairy", Type::Fairy, Type::None, 70, 45, 48, 35, 60, 65},

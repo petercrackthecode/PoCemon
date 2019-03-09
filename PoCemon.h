@@ -2,19 +2,24 @@
 #define POCEMON_H
 
 #include <string>
-#include "PoCemonData.h"
 #include "Enums.h"
-#include "Combat.h"
 
-class Pocemon : protected PocemonData
+class Pocemon
 {
-private:
+public: //private:
     PkmnId id;
-    std::string name;
     int level;
 
+    std::string name;
     Type type1;
     Type type2;
+
+    int hp;
+    int atk;
+    int def;
+    int speed;
+    int spAtk;
+    int spDef;
 
     int baseHp;
     int baseAtk;
@@ -37,8 +42,12 @@ private:
     int evSpAtk;
     int evSpDef;
 
+    static int calculateStat(const int &lvl, const int &baseStat,
+                             const int &ivStat = 0, const int &evStat = 0,
+                             const bool &sHp = false);
+
 public:
-    Pocemon(const PkmnId selectedId, const int lvl);
+    Pocemon(const PkmnId &selectedId, const int &lvl);
 
 
 };

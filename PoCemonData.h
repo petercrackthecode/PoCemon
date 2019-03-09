@@ -6,7 +6,6 @@
 
 class PocemonData
 {
-    // In the future, all these member variables will be changed to "proteced".
 public:
     std::string name;
     Type type1;
@@ -23,6 +22,16 @@ public:
     const static PocemonData *allData;
     static std::string getTypeName(Type type);
     static PocemonData* defineAllPocemonData();
+
+    PocemonData(std::string tempName, 
+                Type tempType1,
+                Type tempType2,
+                int tempBaseHp,
+                int tempBaseAtk,
+                int tempBaseDef,
+                int tempBaseSpeed,
+                int tempBaseSpAtk,
+                int tempBaseSpDef);
 };
 
 
