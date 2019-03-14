@@ -59,6 +59,8 @@ int Pocemon::calculateStat(const int &lvl,
         stat = 5;
 
     // Note: Decimal is intentionally truncated.
+    // Simplified version of the formula:
+    // stat += (lvl * (2 * baseStat)) / 100;
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
 }

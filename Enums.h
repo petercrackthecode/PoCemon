@@ -3,7 +3,7 @@
 
 enum class Stat
 {
-    hp,
+    hp, 
     attack,
     def,
     speed,

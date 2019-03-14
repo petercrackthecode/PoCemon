@@ -24,12 +24,12 @@ public: //private:
                              const int &evStat = 0,
                              const bool &isHp = false);
 
-    PkmnId id;
-    int level;
+    PkmnId id; // Need Getter
+    int level; // Need Getter
 
-    std::string name;
-    Type type1;
-    Type type2;
+    std::string name; // Need Getter
+    Type type1; // Need Getter
+    Type type2; // Need Getter
 
     // TODO: I'm considering creating a Struct that holds all
     //       six stats (hp, atk, def, speed, spAtk, and spDef).
@@ -44,12 +44,13 @@ public: //private:
     int curSpAtk;
     int curSpDef;
 
-    int hp;
-    int atk;
-    int def;
-    int speed;
-    int spAtk;
-    int spDef;
+    // Treat these as const during a fight:
+    int hp; // Need Getter
+    int atk; // Need Getter
+    int def; // Need Getter
+    int speed; // Need Getter
+    int spAtk; // Need Getter
+    int spDef; // Need Getter
 
     int baseHp;
     int baseAtk;
@@ -58,6 +59,7 @@ public: //private:
     int baseSpAtk;
     int baseSpDef;
 
+    // Varation between different Pikachu
     int ivHp;
     int ivAtk;
     int ivDef;
