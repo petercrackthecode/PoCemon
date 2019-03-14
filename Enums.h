@@ -11,6 +11,14 @@ enum class Stat
     spDefense
 };
 
+enum class AbilityCategory
+{
+    None,
+    Physical,
+    Status,
+    Special
+};
+
 enum class Type
 {
     None,
