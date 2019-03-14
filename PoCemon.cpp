@@ -19,7 +19,8 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     baseSpAtk = PocemonData::allData[tempId].baseSpAtk;
     baseSpDef = PocemonData::allData[tempId].baseSpDef;
 
-    // Normally, IV values are a random int from 0 to 15 (need to implement randomization).
+    // Normally, IV values are a random int from 0 to 15
+    // TODO: Need to implement randomization.
     ivHp = 0;
     ivAtk = 0;
     ivDef = 0;

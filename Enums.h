@@ -63,7 +63,7 @@ enum class Type
 //	};
 //}
 
-
+// A PoCemon's ID number.
 enum class PkmnId
 {
     MissingNo,

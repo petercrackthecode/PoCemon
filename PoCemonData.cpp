@@ -1,9 +1,16 @@
 #include "PoCemonData.h"
 #include "PoCemon.h"
+#include "Enums.h"
 
-PocemonData::PocemonData(std::string tempName, Type tempType1, Type tempType2,
-                         int tempBaseHp, int tempBaseAtk, int tempBaseDef,
-                         int tempBaseSpeed, int tempBaseSpAtk, int tempBaseSpDef)
+PocemonData::PocemonData(std::string tempName,
+                         Type tempType1,
+                         Type tempType2,
+                         int tempBaseHp,
+                         int tempBaseAtk,
+                         int tempBaseDef,
+                         int tempBaseSpeed,
+                         int tempBaseSpAtk,
+                         int tempBaseSpDef)
 {
     name = tempName;
     type1 = tempType1;

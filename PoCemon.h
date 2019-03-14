@@ -7,12 +7,42 @@
 class Pocemon
 {
 public: //private:
+    // Creates a PoCemon at the requested level.
+    Pocemon(const PkmnId &selectedId, const int &lvl);
+
+
+
+    // *******************************************************
+    // *** Everything below will be private in the future: ***
+    // *******************************************************
+
+    // Calcualates an individual stat value. 
+    // If calculating HP, set "isHp" to true.
+    static int calculateStat(const int &lvl,
+                             const int &baseStat,
+                             const int &ivStat = 0,
+                             const int &evStat = 0,
+                             const bool &isHp = false);
+
     PkmnId id;
     int level;
 
     std::string name;
     Type type1;
     Type type2;
+
+    // TODO: I'm considering creating a Struct that holds all
+    //       six stats (hp, atk, def, speed, spAtk, and spDef).
+    //       Each PoCemon would have 4 of those Structs.
+    //       (i.e, one for current stats, one for base stats,
+    //        one for iv stats, and one for ev stats.)
+
+    int curHp;
+    int curAtk;
+    int curDef;
+    int curSpeed;
+    int curSpAtk;
+    int curSpDef;
 
     int hp;
     int atk;
@@ -42,18 +72,9 @@ public: //private:
     int evSpAtk;
     int evSpDef;
 
-    static int calculateStat(const int &lvl, const int &baseStat,
-                             const int &ivStat = 0, const int &evStat = 0,
-                             const bool &sHp = false);
-
-public:
-    Pocemon(const PkmnId &selectedId, const int &lvl);
-
+    
 
 };
-
-
-
 
 
 
