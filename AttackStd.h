@@ -4,7 +4,7 @@
 #include <string>
 #include "Enums.h"
 #include "Ability.h"
-/*
+
 class AttackStd : public Ability
 {
 public:
@@ -13,7 +13,7 @@ public:
               const std::string &tempDescription,
               //const std::string &tempDevDescription,
               const Type &tempType,
-              const AbilityCategory tempAbilityCategory,
+              const AbilityCategory &tempAbilityCategory,
               const int &tempPower,
               const int &tempAccuracy,
               const int &tempMaxPP);
@@ -27,5 +27,5 @@ public:
 private:
 
 };
-*/
+
 #endif

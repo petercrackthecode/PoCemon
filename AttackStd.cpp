@@ -1,43 +1,46 @@
+#include <iostream>
+
 #include "AttackStd.h"
 #include "Enums.h"
 
-/*
+
 AttackStd::AttackStd(const int &tempId,
                      const std::string &tempName,
                      const std::string &tempDescription,
                      //const std::string &tempDevDescription,
                      const Type &tempType,
-                     const AbilityCategory tempAbilityCategory,
+                     const AbilityCategory &tempAbilityCategory,
                      const int &tempPower,
                      const int &tempAccuracy,
-                     const int &tempMaxPP)
+                     const int &tempMaxPP) : Ability{ tempId, tempName, tempDescription,  tempType, tempAbilityCategory, tempPower, tempAccuracy, tempMaxPP }
 {
-    id = tempId;
-    name = tempName;
-    description = tempDescription;
-    devDescription = ""; // tempDevDescription;
-    type = tempType;
-    abilityCategory = tempAbilityCategory;
-    power = tempPower;
-    accuracy = tempAccuracy;
-    maxPP = tempMaxPP;
+    std::cout << this->description << std::endl;
+    //id = tempId;
+    //name = tempName;
+    //description = tempDescription;
+    //devDescription = ""; // tempDevDescription;
+    //type = tempType;
+    //abilityCategory = tempAbilityCategory;
+    //power = tempPower;
+    //accuracy = tempAccuracy;
+    //maxPP = tempMaxPP;
 }
 
 bool AttackStd::preCombat(Pocemon attacker, Pocemon defender)
 {
-
+    return false;
 }
 
 bool AttackStd::mainEffect(Pocemon attacker, Pocemon defender)
 {
-
+    return false;
 }
 
 bool AttackStd::postCombat(Pocemon attacker, Pocemon defender)
 {
-
+    return false;
 }
-*/
+
 
 
 // Attack data, to be used in the future @__@

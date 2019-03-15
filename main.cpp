@@ -40,7 +40,7 @@ void tay();
 int main()
 {
     int whoAreYou;
-    cout << "Who ARE you? o_O" << endl;
+    cout << "New phone, who dis?" << endl;
     cout << "1. Aman" << endl << "2. Kate" << endl
         << "3. Peter" << endl << "4. Tay" << endl;
     cin >> whoAreYou;
