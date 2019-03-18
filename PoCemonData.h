@@ -18,6 +18,8 @@ public:
                 int tempBaseSpAtk,
                 int tempBaseSpDef);
 
+    PocemonData();
+
     // Takes a Type enum and returns its name (as a string).
     static std::string getTypeName(Type type);
 

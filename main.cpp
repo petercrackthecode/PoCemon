@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-//============================================================================
-// Name        : PoCemon.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
-
-#include <iostream>
-using namespace std;
-
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-	return 0;
-=======
-﻿// main.cpp : Defines the entry point for the application.
-
 #include "PoCemon.h"
 #include "Combat.h"
 #include "Enums.h"
@@ -193,5 +175,4 @@ int main()
     }
 
     return 0;
->>>>>>> 715ca8e7d67d3f02e313e4636252527cc330a23c
 }

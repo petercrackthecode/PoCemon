@@ -7,23 +7,21 @@
 
 template <class BasicAttributeReturn>
 BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const	{
-	switch(type)	{
-		case BasicAttribute::id: return id;
-		case BasicAttribute::level: return level;
-		case BasicAttribute::name: return name;
-		case BasicAttribute::type1: return type1;
-		default: return type2;
-	}
+	if (type == BasicAttribute::id) return id;
+	if (type == BasicAttribute::level) return level;
+	if (type == BasicAttribute::name) return name;
+	if (type == BasicAttribute::type1) return type1;
+
+	return type2;
 }
 
 int Pocemon::getStat(Stat type) const	{
-	switch(type)	{
-		case Stat::hp: return hp;
-		case Stat::attack: return atk;
-		case Stat::def: return speed;
-		case Stat::spAttack: return spAtk;
-		default: return spDef;
-	}
+	if (type == Stat::hp) return hp;
+	if (type == Stat::attack) return atk;
+	if (type == Stat::speed) return speed;
+	if (type == Stat::spAttack) return spAtk;
+
+	return spDef;
 }
 
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)

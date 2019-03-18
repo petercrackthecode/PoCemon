@@ -12,7 +12,7 @@ AttackStd::AttackStd(const int &tempId,
                      const AbilityCategory &tempAbilityCategory,
                      const int &tempPower,
                      const int &tempAccuracy,
-                     const int &tempMaxPP) : Ability{ tempId, tempName, tempDescription,  tempType, tempAbilityCategory, tempPower, tempAccuracy, tempMaxPP }
+                     const int &tempMaxPP) : Ability(tempId, tempName, tempDescription,  tempType, tempAbilityCategory, tempPower, tempAccuracy, tempMaxPP)
 {
     std::cout << this->description << std::endl;
     //id = tempId;
