@@ -1,13 +1,30 @@
-/*
- * PoCemon.cpp
- *
- *  Created on: Mar 18, 2019
- *      Author: dungnguyen
- */
 
 #include "PoCemon.h"
 #include "PoCemonData.h"
+#include "Enums.h"
 #include <cmath>
+
+
+template <class BasicAttributeReturn>
+BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const	{
+	switch(type)	{
+		case BasicAttribute::id: return id;
+		case BasicAttribute::level: return level;
+		case BasicAttribute::name: return name;
+		case BasicAttribute::type1: return type1;
+		default: return type2;
+	}
+}
+
+int Pocemon::getStat(Stat type) const	{
+	switch(type)	{
+		case Stat::hp: return hp;
+		case Stat::attack: return atk;
+		case Stat::def: return speed;
+		case Stat::spAttack: return spAtk;
+		default: return spDef;
+	}
+}
 
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
@@ -71,5 +88,3 @@ int Pocemon::calculateStat(const int &lvl,
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
 }
-
-

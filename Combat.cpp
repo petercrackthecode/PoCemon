@@ -1,10 +1,3 @@
-/*
- * Combat.cpp
- *
- *  Created on: Mar 18, 2019
- *      Author: dungnguyen
- */
-
 #include "Combat.h"
 
 // This class is totally incomplete right now.
@@ -47,5 +40,3 @@ const float Combat::dmgMultTbl[][19] = {
     { 1, 1, .5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, .5, .5 },
     { 1, 1, 2, 1, .5, 1, 1, 1, 1, .5, .5, 1, 1, 1, 1, 1, 2, 2, 1 }
 };
-
-

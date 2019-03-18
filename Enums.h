@@ -1,6 +1,24 @@
 #ifndef ENUMS_H
 #define ENUMS_H
 
+/*
+ // Treat these as const during a fight:
+    int hp; // Need Getter
+    int atk; // Need Getter
+    int def; // Need Getter
+    int speed; // Need Getter
+    int spAtk; // Need Getter
+    int spDef; // Need Getter
+ * */
+
+enum class BasicAttribute	{
+	id,
+	level,
+	name,
+	type1,
+	type2
+};
+
 enum class Stat
 {
     hp, 
@@ -11,6 +29,13 @@ enum class Stat
     spDefense
 };
 
+enum class AbilityCategory
+{
+    None,
+    Physical,
+    Status,
+    Special
+};
 enum class Type
 {
     None,

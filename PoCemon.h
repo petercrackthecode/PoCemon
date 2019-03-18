@@ -16,13 +16,20 @@ public: //private:
     // *** Everything below will be private in the future: ***
     // *******************************************************
 
-    // Calcualates an individual stat value.
+    // Calculates an individual stat value.
     // If calculating HP, set "isHp" to true.
     static int calculateStat(const int &lvl,
                              const int &baseStat,
                              const int &ivStat = 0,
                              const int &evStat = 0,
                              const bool &isHp = false);
+
+    //BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
+    template <class BasicAttributeReturn>
+    BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
+
+    int getStat(Stat type) const;
+private:
 
     PkmnId id; // Need Getter
     int level; // Need Getter
@@ -74,11 +81,7 @@ public: //private:
     int evSpAtk;
     int evSpDef;
 
-
-
 };
-
-
 
 
 #endif

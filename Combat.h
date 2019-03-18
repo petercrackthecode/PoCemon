@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Combat.h
  *
@@ -5,6 +6,8 @@
  *      Author: dungnguyen
  */
 
+=======
+>>>>>>> 715ca8e7d67d3f02e313e4636252527cc330a23c
 #ifndef COMBAT_H
 #define COMBAT_H
 
@@ -23,4 +26,8 @@ private:
     const static float dmgMultTbl[][19];
 };
 
+<<<<<<< HEAD
 #endif
+=======
+#endif
+>>>>>>> 715ca8e7d67d3f02e313e4636252527cc330a23c

@@ -8,13 +8,16 @@
 class AttackStd : public Ability
 {
 public:
-    AttackStd(const std::string tempName,
-                    const std::string tempDescription,
-                    const std::string tempDevDescription,
-                    const Type tempType,
-                    const int &tempPower,
-                    const int &tempAccuracy,
-                    const int &tempMaxPP);
+
+    AttackStd(const int &tempId,
+              const std::string &tempName,
+              const std::string &tempDescription,
+              //const std::string &tempDevDescription,
+              const Type &tempType,
+              const AbilityCategory &tempAbilityCategory,
+              const int &tempPower,
+              const int &tempAccuracy,
+              const int &tempMaxPP);
 
     bool preCombat(Pocemon attacker, Pocemon defender);
     bool mainEffect(Pocemon attacker, Pocemon defender);
