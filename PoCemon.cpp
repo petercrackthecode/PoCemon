@@ -5,7 +5,12 @@
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
     int tempId = static_cast<int>(selectedId);
-    
+    //there was my code right?
+	// this is the branch cloned from my repo, if you pasted your code to the repo in your account, you won't see it here.
+	// so you will have to paste your code here and push it to my repo by github
+	// repo stands for repository.
+	//how do i push the code to your repository? 
+	// okay
     id = selectedId;
     level = lvl;
     name = PocemonData::allData[tempId].name;
