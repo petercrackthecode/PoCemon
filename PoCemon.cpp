@@ -1,16 +1,15 @@
 #include "PoCemon.h"
 #include "PoCemonData.h"
 #include <cmath>
-
+#include <iostream>
+#include <Combat.h>
+#include "AttackStd.h"
+#include "Enums.h"
+using namespace std; 
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
     int tempId = static_cast<int>(selectedId);
-    //there was my code right?
-	// this is the branch cloned from my repo, if you pasted your code to the repo in your account, you won't see it here.
-	// so you will have to paste your code here and push it to my repo by github
-	// repo stands for repository.
-	//how do i push the code to your repository? 
-	// okay
+
     id = selectedId;
     level = lvl;
     name = PocemonData::allData[tempId].name;
@@ -68,4 +67,64 @@ int Pocemon::calculateStat(const int &lvl,
     // stat += (lvl * (2 * baseStat)) / 100;
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
+}
+
+void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
+{
+
+	//calculating damage that will be done to pocemon1, using statistics of pocemon2
+	double modifier = Combat::getDmgMultiplier((attack->getType()), (pocemon2->type1), (pocemon2->type2));
+	//from double to int - some errors might occur
+	int damage = ((((2 + (2 * (pocemon2->level) / 5))* (attack->getPower()) * ((pocemon2->curAtk) / (pocemon2->curDef)) / 50) + 2)*modifier );
+	//doing damage to pocemon1
+
+	cout << pocemon1->curDef;
+	cout << pocemon1->curAtk;
+	cout << pocemon1->curSpDef;
+	cout << pocemon1->curSpAtk;
+	cout << pocemon1->curSpeed;
+	cout << pocemon1->curHp;
+
+	if (attack->getAbilityCategory() == AbilityCategory::Physical) {
+		int newAtk = pocemon1->curAtk - damage;
+		pocemon1->curAtk = newAtk;
+		int newDef = pocemon1->curDef - damage;
+		pocemon1->curDef = newDef;
+
+		cout << pocemon1->curDef;
+		cout << pocemon1->curAtk;
+	}
+	else if (attack->getAbilityCategory() == AbilityCategory::Special) {
+		int newSpAtk = pocemon1->curSpAtk - damage;
+		pocemon1->curSpAtk = newSpAtk;
+		int newSpDef = pocemon1->curSpDef - damage;
+		pocemon1->curSpDef = newSpDef;
+
+
+		cout << pocemon1->curSpDef;
+		cout << pocemon1->curSpAtk;
+	}
+	else if (attack->getAbilityCategory() == AbilityCategory::Status) {
+		int newHp = pocemon1->curHp - damage;
+		pocemon1->curHp = newHp;
+		int newSpeed = pocemon1->curSpeed - damage;
+		pocemon1->curSpeed = newSpeed;
+
+
+		cout << pocemon1->curSpeed;
+		cout << pocemon1->curHp;
+	}
+
+	//else {
+		//	throw "No attack type found";
+	//}
+
+	//ofstream battlestat;
+	//battlestat.open("battlestat.txt");
+	//battlestat << pocemon2->id << " caused damage to " << pocemon1->id << "." << endl;
+	//pocemon1.savedata();
+	//ofstream battlestatUser;
+	//battlestatser.open("battlestatUser.txt");
+	//battlestat << pocemon2->id << " caused damage to " << pocemon1->id << "." << endl;
+
 }

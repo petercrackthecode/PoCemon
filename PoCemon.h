@@ -1,15 +1,21 @@
 #ifndef POCEMON_H
 #define POCEMON_H
 
+#include "AttackStd.h"
 #include <string>
 #include "Enums.h"
-
+//?
+#include "PoCemonData.h"
+#include <Combat.h>
+#include "AttackStd.h"
+#include "Enums.h"
+//?
 class Pocemon
 {
 public: //private:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
-
+	void doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2);
 
 
     // *******************************************************
@@ -74,7 +80,7 @@ public: //private:
     int evSpAtk;
     int evSpDef;
 
-    
+	
 
 };
 
