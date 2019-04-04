@@ -24,8 +24,15 @@ public:
     virtual bool preCombat(Pocemon attacker, Pocemon defender) = 0;
     virtual bool mainEffect(Pocemon attacker, Pocemon defender) = 0;
     virtual bool postCombat(Pocemon attacker, Pocemon defender) = 0;
-
-
+	AbilityCategory getAbilityCategory() {
+		return abilityCategory;
+	}
+	Type getType() {
+		return type;
+	}
+	int getPower() {
+		return power;
+	}
 protected:
     const int id;
     const std::string name;

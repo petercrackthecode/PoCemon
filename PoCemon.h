@@ -3,13 +3,16 @@
 
 #include <string>
 #include "Enums.h"
+#include "PoCemonData.h"
+#include "Combat.h"
+#include "AttackStd.h"
 
 class Pocemon
 {
 public: //private:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
-
+	void doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2);
 
     template <class BasicAttributeReturn>
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
@@ -79,6 +82,8 @@ public: //private:
     int evSpeed;
     int evSpAtk;
     int evSpDef;
+
+	
 
 };
 
