@@ -17,8 +17,8 @@ public:
             const int &tempPower,
             const int &tempAccuracy,
             const int &tempMaxPP)
-        : id(tempId), name(tempName), description(tempDescription), type(tempType),
-        abilityCategory(tempAbilityCategory), power(tempPower), accuracy(tempAccuracy), maxPP(tempMaxPP)
+        : id{ tempId }, name{ tempName }, description{ tempDescription }, type{ tempType },
+        abilityCategory{ tempAbilityCategory }, power{ tempPower }, accuracy{ tempAccuracy }, maxPP{ tempMaxPP }
     {};
 
     virtual bool preCombat(Pocemon attacker, Pocemon defender) = 0;

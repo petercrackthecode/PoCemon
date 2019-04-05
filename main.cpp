@@ -4,6 +4,7 @@
 #include "PoCemonData.h"
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -37,11 +38,16 @@ void tay();
 
 int main()
 {
+    // Seed for random number generation (this should only be done once throughout the entire program).
+    srand(time(NULL));
+
     int whoAreYou;
-    cout << "New phone, who dis?" << endl;
+    cout << "Who are you?" << endl;
     cout << "1. Aman" << endl << "2. Kate" << endl
         << "3. Peter" << endl << "4. Tay" << endl;
     cin >> whoAreYou;
+    cin.clear();
+    cin.ignore(1000, '\n');
 
     switch (whoAreYou)
     {
@@ -58,7 +64,7 @@ int main()
         tay();
         break;
     default:
-        
+
 
 
 
@@ -77,7 +83,7 @@ int main()
             << setw(4) << "Spd"
             << setw(6) << "spAtk"
             << setw(6) << "spDef" << endl;
-    
+
         // Then, print the actual PoCemon data.
         for (int i = 0; i < 152; ++i)
         {
@@ -132,8 +138,8 @@ int main()
 
         // 3. Lets you select an example PoCemon and displays its stats.
         cout << "*********************************" << endl
-             << "** Example PoCemon Constructor **" << endl
-             << "*********************************" << endl << endl;
+            << "** Example PoCemon Constructor **" << endl
+            << "*********************************" << endl << endl;
 
         int exampleId = 0;
         int exampleLevel;
@@ -165,13 +171,13 @@ int main()
             cin.ignore(1000, '\n');
             cin.clear();
             cin.get();
-        
+
             cout << endl << endl << "(Enter '-1' to quit)" << endl;
             cout << "Choose a PoCemon! (enter a number from 1 to 151) -> ";
             cin >> exampleId;
         }
 
-    break;
+        break;
     }
 
     return 0;

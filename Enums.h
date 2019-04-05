@@ -11,17 +11,17 @@
     int spDef; // Need Getter
  * */
 
-enum BasicAttribute	{
-	id,
-	level,
-	name,
-	type1,
-	type2
+enum class BasicAttribute {
+    id,
+    level,
+    name,
+    type1,
+    type2
 };
 
-enum Stat
+enum class Stat
 {
-    hp, 
+    hp,
     attack,
     def,
     speed,
@@ -29,7 +29,7 @@ enum Stat
     spDefense
 };
 
-enum AbilityCategory
+enum class AbilityCategory
 {
     None,
     Physical,
@@ -37,7 +37,7 @@ enum AbilityCategory
     Special
 };
 
-enum Type
+enum class Type
 {
     undefined,
     Normal,
