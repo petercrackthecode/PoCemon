@@ -4,6 +4,8 @@
 #include <string>
 #include "Enums.h"
 #include "Ability.h"
+class Pocemon;
+
 
 class AttackStd : public Ability
 {
