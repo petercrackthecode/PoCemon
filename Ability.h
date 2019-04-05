@@ -3,7 +3,7 @@
 
 #include <string>
 #include "Enums.h"
-#include "PoCemon.h"
+class Pocemon;
 
 class Ability
 {

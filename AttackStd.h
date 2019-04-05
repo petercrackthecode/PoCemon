@@ -4,7 +4,8 @@
 #include <string>
 #include "Enums.h"
 #include "Ability.h"
-using namespace std;
+class Pocemon;
+
 
 class AttackStd : public Ability
 {
