@@ -48,6 +48,13 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     speed = calculateStat(level, baseSpeed, ivSpeed, evSpeed);
     spAtk = calculateStat(level, baseSpAtk, ivSpAtk, evSpAtk);
     spDef = calculateStat(level, baseSpDef, ivSpDef, evSpDef);
+
+    curHp = hp;
+    curAtk = atk;
+    curDef = def;
+    curSpeed = speed;
+    curSpAtk = spAtk;
+    curSpDef = spDef;
 }
 
 
