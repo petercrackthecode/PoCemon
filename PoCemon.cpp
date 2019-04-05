@@ -80,12 +80,12 @@ void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
 	int damage = ((((2 + (2 * (pocemon2->level) / 5))* (attack->getPower()) * ((pocemon2->curAtk) / (pocemon2->curDef)) / 50) + 2)*modifier );
 	//doing damage to pocemon1
 
-	cout << pocemon1->curDef;
-	cout << pocemon1->curAtk;
-	cout << pocemon1->curSpDef;
-	cout << pocemon1->curSpAtk;
-	cout << pocemon1->curSpeed;
-	cout << pocemon1->curHp;
+	cout << pocemon1->curDef << endl;
+	cout << pocemon1->curAtk << endl;
+	cout << pocemon1->curSpDef << endl;
+	cout << pocemon1->curSpAtk << endl;
+	cout << pocemon1->curSpeed << endl;
+	cout << pocemon1->curHp << endl;
 
 	if (attack->getAbilityCategory() == AbilityCategory::Physical) {
 		int newAtk = pocemon1->curAtk - damage;
@@ -93,8 +93,8 @@ void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
 		int newDef = pocemon1->curDef - damage;
 		pocemon1->curDef = newDef;
 
-		cout << pocemon1->curDef;
-		cout << pocemon1->curAtk;
+		cout << pocemon1->curDef << endl;
+		cout << pocemon1->curAtk << endl;
 	}
 	else if (attack->getAbilityCategory() == AbilityCategory::Special) {
 		int newSpAtk = pocemon1->curSpAtk - damage;
@@ -103,8 +103,8 @@ void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
 		pocemon1->curSpDef = newSpDef;
 
 
-		cout << pocemon1->curSpDef;
-		cout << pocemon1->curSpAtk;
+		cout << pocemon1->curSpDef << endl;
+		cout << pocemon1->curSpAtk << endl;
 	}
 	else if (attack->getAbilityCategory() == AbilityCategory::Status) {
 		int newHp = pocemon1->curHp - damage;
@@ -113,8 +113,8 @@ void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
 		pocemon1->curSpeed = newSpeed;
 
 
-		cout << pocemon1->curSpeed;
-		cout << pocemon1->curHp;
+		cout << pocemon1->curSpeed << endl;
+		cout << pocemon1->curHp << endl;
 	}
 
 	//else {
