@@ -6,10 +6,6 @@
 #include "PoCemonData.h"
 #include <iostream>
 #include <iomanip>
-#include "testKate.cpp"
-#include "testTay.cpp"
-#include "testAman.cpp"
-#include "testPeter.cpp"
 #include "AttackStd.h"
 #include "Ability.h"
 #include "Combat.h"

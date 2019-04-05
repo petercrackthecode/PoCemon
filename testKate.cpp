@@ -4,7 +4,7 @@
 #include "PoCemonData.h"
 #include "AttackStd.h"
 #include "Enums.h"
-#include "PoCemon.cpp"
+
 using namespace std;
 
 		void kate() {
@@ -14,6 +14,7 @@ using namespace std;
 			Pocemon Person(PkmnId::Abra, 1);
 			Kate.doDamage(&attack, &Kate, &Person);
 			
+            cin.get();
 			
 			}
 
