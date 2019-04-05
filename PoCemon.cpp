@@ -130,7 +130,7 @@ void Pocemon::doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2)
 	//battlestat << pocemon2->id << " caused damage to " << pocemon1->id << "." << endl;
 
 }
-}
+
 
 
 
