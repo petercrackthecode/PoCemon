@@ -1,6 +1,7 @@
 
 
-class Ability	{
+class Ability
+{
 
 };
 

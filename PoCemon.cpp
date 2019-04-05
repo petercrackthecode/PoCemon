@@ -5,25 +5,6 @@
 #include <cmath>
 
 
-template <class BasicAttributeReturn>
-BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const	{
-	if (type == BasicAttribute::id) return id;
-	if (type == BasicAttribute::level) return level;
-	if (type == BasicAttribute::name) return name;
-	if (type == BasicAttribute::type1) return type1;
-
-	return type2;
-}
-
-int Pocemon::getStat(Stat type) const	{
-	if (type == Stat::hp) return hp;
-	if (type == Stat::attack) return atk;
-	if (type == Stat::speed) return speed;
-	if (type == Stat::spAttack) return spAtk;
-
-	return spDef;
-}
-
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
     int tempId = static_cast<int>(selectedId);
@@ -86,3 +67,26 @@ int Pocemon::calculateStat(const int &lvl,
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
 }
+
+
+
+template <class BasicAttributeReturn>
+BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const {
+    if (type == BasicAttribute::id) return id;
+    if (type == BasicAttribute::level) return level;
+    if (type == BasicAttribute::name) return name;
+    if (type == BasicAttribute::type1) return type1;
+
+    return type2;
+}
+
+
+int Pocemon::getStat(Stat type) const {
+    if (type == Stat::hp) return hp;
+    if (type == Stat::attack) return atk;
+    if (type == Stat::speed) return speed;
+    if (type == Stat::spAttack) return spAtk;
+
+    return spDef;
+}
+

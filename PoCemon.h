@@ -11,6 +11,11 @@ public: //private:
     Pocemon(const PkmnId &selectedId, const int &lvl);
 
 
+    template <class BasicAttributeReturn>
+    BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
+
+    int getStat(Stat type) const;
+
 
     // *******************************************************
     // *** Everything below will be private in the future: ***
@@ -24,12 +29,6 @@ public: //private:
                              const int &evStat = 0,
                              const bool &isHp = false);
 
-    //BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
-    template <class BasicAttributeReturn>
-    BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
-
-    int getStat(Stat type) const;
-private:
 
     PkmnId id; // Need Getter
     int level; // Need Getter
