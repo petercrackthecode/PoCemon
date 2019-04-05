@@ -2,6 +2,8 @@
 #include <string>
 #include "AttackStd.h"
 #include "Enums.h"
+#include "PoCemon.h"
+
 using namespace std;
 
 AttackStd::AttackStd(const int &tempId,
