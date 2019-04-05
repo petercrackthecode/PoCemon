@@ -3,7 +3,6 @@
 
 #include <string>
 #include "Enums.h"
-using namespace std;
 
 class PocemonData
 {
