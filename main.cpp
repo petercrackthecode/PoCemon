@@ -47,7 +47,7 @@ int main()
         << "3. Peter" << endl << "4. Tay" << endl;
     cin >> whoAreYou;
     cin.clear();
-    cin.ignore(1000, '\0');
+    cin.ignore(1000, '\n');
 
     switch (whoAreYou)
     {
