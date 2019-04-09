@@ -1,2 +1,2 @@
 
-int randomGenerator(int maxValue = 255);
+int randomGenerator(int minValue = 0, int maxValue = 255);
