@@ -6,7 +6,7 @@
 #include "Ability.h"
 class Pocemon;
 
-
+// TODO: Rename to AttackAbility
 class AttackStd : public Ability
 {
 public:
@@ -21,9 +21,9 @@ public:
               const int &tempAccuracy,
               const int &tempMaxPP);
 
-    bool preCombat(Pocemon attacker, Pocemon defender);
-    bool mainEffect(Pocemon attacker, Pocemon defender);
-    bool postCombat(Pocemon attacker, Pocemon defender);
+    bool preCombat(Pocemon &attacker, Pocemon &defender);
+    bool mainEffect(Pocemon &attacker, Pocemon &defender);
+    bool postCombat(Pocemon &attacker, Pocemon &defender);
 
 private:
 
