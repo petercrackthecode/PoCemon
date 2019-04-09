@@ -21,18 +21,13 @@ public:
         abilityCategory{ tempAbilityCategory }, power{ tempPower }, accuracy{ tempAccuracy }, maxPP{ tempMaxPP }
     {};
 
-    virtual bool preCombat(Pocemon attacker, Pocemon defender) = 0;
-    virtual bool mainEffect(Pocemon attacker, Pocemon defender) = 0;
-    virtual bool postCombat(Pocemon attacker, Pocemon defender) = 0;
-	AbilityCategory getAbilityCategory() {
-		return abilityCategory;
-	}
-	Type getType() {
-		return type;
-	}
-	int getPower() {
-		return power;
-	}
+    virtual bool preCombat(Pocemon &attacker, Pocemon &defender) = 0;
+    virtual bool mainEffect(Pocemon &attacker, Pocemon &defender) = 0;
+    virtual bool postCombat(Pocemon &attacker, Pocemon &defender) = 0;
+	AbilityCategory getAbilityCategory() const { return abilityCategory; }
+	Type getType() const { return type; }
+	int getPower() const { return power; }
+
 protected:
     const int id;
     const std::string name;
