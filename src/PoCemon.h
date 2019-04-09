@@ -1,75 +1,22 @@
 #ifndef POCEMON_H
 #define POCEMON_H
 
+#include <string>
 #include "Enums.h"
 #include "PoCemonData.h"
 #include "Combat.h"
 #include "AttackStd.h"
-#include "GameSprite.hpp"
 
-#include <SFML/Graphics.hpp>
-
-#include <string>
-#include <vector>
-
-class Pocemon : public GameSprite
+class Pocemon
 {
 public: //private:
     // Creates a PoCemon at the requested level.
-    Pocemon() : GameSprite("")   {
-        
-    }
-    
-    Pocemon(const PkmnId &selectedId, const int &lvl, std::string imagePath) : GameSprite(imagePath)
-    {
-        int tempId = static_cast<int>(selectedId);
-        
-        id = selectedId;
-        level = lvl;
-        name = PocemonData::allData[tempId].name;
-        type1 = PocemonData::allData[tempId].type1;
-        type2 = PocemonData::allData[tempId].type2;
-        
-        baseHp = PocemonData::allData[tempId].baseHp;
-        baseAtk = PocemonData::allData[tempId].baseAtk;
-        baseDef = PocemonData::allData[tempId].baseDef;
-        baseSpeed = PocemonData::allData[tempId].baseSpeed;
-        baseSpAtk = PocemonData::allData[tempId].baseSpAtk;
-        baseSpDef = PocemonData::allData[tempId].baseSpDef;
-        
-        // Normally, IV values are a random int from 0 to 15
-        // TODO: Need to implement randomization.
-        ivHp = 0;
-        ivAtk = 0;
-        ivDef = 0;
-        ivSpeed = 0;
-        ivSpAtk = 0;
-        ivSpDef = 0;
-        
-        // EV values start at 0 and increase with each PoCemon defeated!
-        evHp = 0;
-        evAtk = 0;
-        evDef = 0;
-        evSpeed = 0;
-        evSpAtk = 0;
-        evSpDef = 0;
-        
-        hp = calculateStat(level, baseHp, ivHp, evHp, true);
-        atk = calculateStat(level, baseAtk, ivAtk, evAtk);
-        def = calculateStat(level, baseDef, ivDef, evDef);
-        speed = calculateStat(level, baseSpeed, ivSpeed, evSpeed);
-        spAtk = calculateStat(level, baseSpAtk, ivSpAtk, evSpAtk);
-        spDef = calculateStat(level, baseSpDef, ivSpDef, evSpDef);
-        
-        curHp = hp;
-        curAtk = atk;
-        curDef = def;
-        curSpeed = speed;
-        curSpAtk = spAtk;
-        curSpDef = spDef;
-    }
-    
-	void doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2);
+    Pocemon(const PkmnId &selectedId, const int &lvl);
+	void doDamage(const AttackStd &attack, Pocemon &pocemon1);
+
+    void displayInfo(bool detailed = false);
+
+    void resetCurStats();
 
     template <class BasicAttributeReturn>
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
@@ -140,8 +87,8 @@ public: //private:
     int evSpAtk;
     int evSpDef;
 
+	
 
-    
 };
 
 
