@@ -12,7 +12,11 @@ class Pocemon
 public: //private:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
-	void doDamage(AttackStd *attack, Pocemon *pocemon1, Pocemon *pocemon2);
+	void doDamage(const AttackStd &attack, Pocemon &pocemon1);
+
+    void displayInfo(bool detailed = false);
+
+    void resetCurStats();
 
     template <class BasicAttributeReturn>
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
