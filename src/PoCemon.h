@@ -4,15 +4,15 @@
 #include <string>
 #include "Enums.h"
 #include "PoCemonData.h"
-#include "Combat.h"
-#include "AttackStd.h"
+#include "AttackAbility.h"
 
 class Pocemon
 {
-public: //private:
+public:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
-	void doDamage(const AttackStd &attack, Pocemon &pocemon1);
+
+	void doDamage(const AttackAbility &attack, Pocemon &pocemon1);
 
     void displayInfo(bool detailed = false);
 
@@ -22,7 +22,26 @@ public: //private:
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
 
     int getStat(Stat type) const;
+    PkmnId getId() const { return id; };
+    int getLevel() const { return level; };
 
+    std::string getName() const { return name; };
+    Type getType1() const { return type1; };
+    Type getType2() const { return type2; };
+
+    int getCurHp() const { return curHp; };
+    int getCurAtk() const { return curAtk; };
+    int getCurDef() const { return curDef; };
+    int getCurSpeed() const { return curSpeed; };
+    int getCurSpAtk() const { return curSpAtk; };
+    int getCurSpDef() const { return curSpDef; };
+
+    int getOriginalHp() const { return hp; };
+    int getOriginalAtk() const { return atk; };
+    int getOriginalDef() const { return def; };
+    int getOriginalSpeed() const { return speed; };
+    int getOriginalSpAtk() const { return spAtk; };
+    int getOriginalSpDef() const { return spDef; };
 
     // *******************************************************
     // *** Everything below will be private in the future: ***
@@ -37,18 +56,18 @@ public: //private:
                              const bool &isHp = false);
 
 
-    PkmnId id; // Need Getter
-    int level; // Need Getter
+    PkmnId id;
+    int level;
 
-    std::string name; // Need Getter
-    Type type1; // Need Getter
-    Type type2; // Need Getter
+    std::string name;
+    Type type1;
+    Type type2;
 
     // TODO: I'm considering creating a Struct that holds all
     //       six stats (hp, atk, def, speed, spAtk, and spDef).
     //       Each PoCemon would have 4 of those Structs.
     //       (i.e, one for current stats, one for base stats,
-    //        one for iv stats, and one for ev stats.)
+    //       one for iv stats, and one for ev stats.)
 
     int curHp;
     int curAtk;
@@ -58,12 +77,12 @@ public: //private:
     int curSpDef;
 
     // Treat these as const during a fight:
-    int hp; // Need Getter
-    int atk; // Need Getter
-    int def; // Need Getter
-    int speed; // Need Getter
-    int spAtk; // Need Getter
-    int spDef; // Need Getter
+    int hp;
+    int atk;
+    int def;
+    int speed;
+    int spAtk;
+    int spDef;
 
     int baseHp;
     int baseAtk;

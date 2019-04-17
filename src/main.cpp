@@ -1,5 +1,4 @@
 #include "PoCemon.h"
-#include "Combat.h"
 #include "Enums.h"
 #include "PoCemonData.h"
 #include <iostream>
@@ -27,7 +26,7 @@ using namespace std;
 //    stats & info for all PoCemon.
 //
 // 3. In Combat.cpp, the 'dmgMultTbl' 2D array is defined. 'dmgMultTbl' stands
-//    for 'damage multiplier table'. This 2-dimensional array is used by the
+//    for 'damage multiplier table'. This 2-dimensional array is used by the 
 //    getDmgMultiplier() function. When you pass the function 2 or 3 'Type' arguments,
 //    it will do a look up in the array to find out what the correct damage multiplier is.
 
@@ -39,12 +38,12 @@ void tay();
 int main()
 {
     // Seed for random number generation (this should only be done once throughout the entire program).
-    srand(static_cast<unsigned int>(time(NULL)));
+    srand(time(NULL));
 
     int whoAreYou;
     cout << "Who are you?" << endl;
     cout << "1. Aman" << endl << "2. Kate" << endl
-    << "3. Peter" << endl << "4. Tay" << endl;
+        << "3. Peter" << endl << "4. Tay" << endl;
     cin >> whoAreYou;
     cin.clear();
     cin.ignore(1000, '\n');
@@ -98,44 +97,12 @@ int main()
                 << setw(6) << PocemonData::allData[i].baseSpAtk
                 << setw(6) << PocemonData::allData[i].baseSpDef
                 << endl;
-            }
+        }
 
-            cout << endl << endl;
-
-
-
-            // 2. Shows some examples of damage multipliers.
-            cout << "********************************" << endl;
-            cout << "** Example Damage Multipliers **" << endl;
-            cout << "********************************" << endl << endl;
-
-            cout << "Super Effective:" << endl
-            << "A Water attack does "
-            << Combat::getDmgMultiplier(Type::Water, Type::Fire) * 100
-            << "% damage to a Fire PoCemon." << endl << endl;
-
-            cout << "Not Very Effective...:" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Water) * 100
-            << "% damage to a Water PoCemon." << endl << endl;
-
-            cout << "Double Resistance (Not Very Effective... x2):" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Water, Type::Rock) * 100
-            << "% damage to a PoCemon that is both Water & Rock." << endl << endl;
-
-            cout << "Super Effective (again):" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Grass) * 100
-            << "% damage to a Grass PoCemon." << endl << endl;
-
-            cout << "DOUBLE Super Effective!:" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Grass, Type::Bug) * 100
-            << "% damage to a PoCemon that is both Grass & Bug." << endl << endl << endl;
+        cout << endl << endl;
 
 
-
+        
         // 3. Lets you select an example PoCemon and displays its stats.
         cout << "*********************************" << endl
             << "** Example PoCemon Constructor **" << endl

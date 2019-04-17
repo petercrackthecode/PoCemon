@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "AttackStd.h"
+#include "AttackAbility.h"
 #include "Enums.h"
 #include "PoCemon.h"
 #include "randomGenerator.h"
@@ -8,7 +8,7 @@
 using namespace std;
 
 // TODO: Rename to AttackAbility
-AttackStd::AttackStd(const int &tempId,
+AttackAbility::AttackAbility(const int &tempId,
                      const std::string &tempName,
                      const std::string &tempDescription,
                      //const std::string &tempDevDescription,
@@ -16,7 +16,11 @@ AttackStd::AttackStd(const int &tempId,
                      const AbilityCategory &tempAbilityCategory,
                      const int &tempPower,
                      const int &tempAccuracy,
-                     const int &tempMaxPP) : Ability{ tempId, tempName, tempDescription,  tempType, tempAbilityCategory, tempPower, tempAccuracy, tempMaxPP }
+                     const int &tempMaxPP,
+                     const int &tempStatusEffectChance)
+                    : Ability{ tempId, tempName, tempDescription, tempType,
+                               tempAbilityCategory, tempPower, tempAccuracy,
+                               tempMaxPP, tempStatusEffectChance }
 {
     std::cout << this->description << std::endl;
     //id = tempId;
@@ -30,13 +34,8 @@ AttackStd::AttackStd(const int &tempId,
     //maxPP = tempMaxPP;
 }
 
-bool AttackStd::preCombat(Pocemon &attacker, Pocemon &defender)
-{
 
-    return false;
-}
-
-bool AttackStd::mainEffect(Pocemon &attacker, Pocemon &defender)
+bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 {
     int random = randomGenerator();
     int threshold = this->accuracy * 1 * 1;
@@ -58,12 +57,6 @@ bool AttackStd::mainEffect(Pocemon &attacker, Pocemon &defender)
     defender.displayInfo();
 
     return true;
-}
-
-bool AttackStd::postCombat(Pocemon &attacker, Pocemon &defender)
-{
-
-    return false;
 }
 
 

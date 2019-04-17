@@ -1,6 +1,6 @@
 
 #include <string>
-#include <list>
+#include <vector>
 #include <algorithm>
 #include "Player.h"
 
@@ -16,12 +16,16 @@ void Player::addToTeam(Pocemon &newPocemon)
     {
         pocemonTeam.push_back(newPocemon);
     }
+    // TODO: Throw exception?
 }
 
 Pocemon Player::operator[](const int &i)
 {
-    if ((i > 0) && (i < pocemonTeam.size()))
-        return pocemonTeam.; // Binary search or something???? Different data structure??
+    // TODO: Make a class exception?
+    if ((i < 0) || (i >= pocemonTeam.size()))
+        throw "No PoCemon exists at this address";
+
+    return pocemonTeam.at(i);
 }
 
 // Visiting a PoceCenter heals all your PoCemon and removes any status effects (poisoned, burned, etc).
