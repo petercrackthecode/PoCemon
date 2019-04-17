@@ -1,5 +1,5 @@
-#ifndef ATTACKSTD_H
-#define ATTACKSTD_H
+#ifndef ATTACKABILITY_H
+#define ATTACKABILITY_H
 
 #include <string>
 #include "Enums.h"
@@ -7,11 +7,11 @@
 class Pocemon;
 
 // TODO: Rename to AttackAbility
-class AttackStd : public Ability
+class AttackAbility : public Ability
 {
 public:
 
-    AttackStd(const int &tempId,
+    AttackAbility(const int &tempId,
               const std::string &tempName,
               const std::string &tempDescription,
               //const std::string &tempDevDescription,
@@ -19,11 +19,10 @@ public:
               const AbilityCategory &tempAbilityCategory,
               const int &tempPower,
               const int &tempAccuracy,
-              const int &tempMaxPP);
+              const int &tempMaxPP,
+              const int &tempStatusEffectChance);
 
-    bool preCombat(Pocemon &attacker, Pocemon &defender);
-    bool mainEffect(Pocemon &attacker, Pocemon &defender);
-    bool postCombat(Pocemon &attacker, Pocemon &defender);
+    bool use(Pocemon &attacker, Pocemon &defender);
 
 private:
 

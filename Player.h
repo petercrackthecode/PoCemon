@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include <string>
-#include <list>
+#include <vector>
 #include "PoCemon.h"
 
 using namespace std;
@@ -22,7 +22,7 @@ public:
     // *******************************************************
 
     string name;
-    list<Pocemon> pocemonTeam;
+    vector<Pocemon> pocemonTeam;
 
 
 

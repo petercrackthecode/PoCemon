@@ -5,8 +5,7 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-#include "Combat.h"
-#include "AttackStd.h"
+#include "AttackAbility.h"
 #include "Enums.h"
 #include "randomGenerator.h"
 using namespace std; 
@@ -71,6 +70,7 @@ int Pocemon::calculateStat(const int &lvl,
     // Note: Decimal is intentionally truncated.
     // Simplified version of the formula:
     // stat += (lvl * (2 * baseStat)) / 100;
+#pragma warning(suppress : 4244) // Supress conversion warning (from double to int)
     stat += (lvl * (2 * (baseStat + ivStat) + (sqrt(evStat) / 4))) / 100;
     return stat;
 }
@@ -87,7 +87,7 @@ void Pocemon::resetCurStats()
 }
 
 
-void Pocemon::doDamage(const AttackStd &attack, Pocemon &defendingPocemon)
+void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 {
     int tempAtk;
     int tempDef;
@@ -105,10 +105,11 @@ void Pocemon::doDamage(const AttackStd &attack, Pocemon &defendingPocemon)
 
 
 	//calculating damage that will be done to defendingPocemon, using statistics of defendingPocemon
-	double modifier = Combat::getDmgMultiplier(attack.getType(), defendingPocemon.type1, defendingPocemon.type2);
-	//from double to int - some errors might occur
+	double modifier = attack.getDmgMultiplier(defendingPocemon);
+	
+#pragma warning(suppress : 4244) // Supress conversion warning (from double to int)
 	int damage = ((((2 + (2 * this->level / 5)) * attack.getPower() * (tempAtk / tempDef) / 50) + 2 ) * modifier ); // TODO: double check proper order for "(2 * this->level / 5)"
-	//doing damage to defendingPocemon
+	
 
     // Random modifier
     // Description: Multiply 'damage' by a random percentage between 0.85 (217÷255) and 1.00 (255÷255).

@@ -1,5 +1,4 @@
 #include "PoCemon.h"
-#include "Combat.h"
 #include "Enums.h"
 #include "PoCemonData.h"
 #include <iostream>
@@ -103,39 +102,7 @@ int main()
         cout << endl << endl;
 
 
-
-        // 2. Shows some examples of damage multipliers.
-        cout << "********************************" << endl;
-        cout << "** Example Damage Multipliers **" << endl;
-        cout << "********************************" << endl << endl;
-
-        cout << "Super Effective:" << endl
-            << "A Water attack does "
-            << Combat::getDmgMultiplier(Type::Water, Type::Fire) * 100
-            << "% damage to a Fire PoCemon." << endl << endl;
-
-        cout << "Not Very Effective...:" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Water) * 100
-            << "% damage to a Water PoCemon." << endl << endl;
-
-        cout << "Double Resistance (Not Very Effective... x2):" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Water, Type::Rock) * 100
-            << "% damage to a PoCemon that is both Water & Rock." << endl << endl;
-
-        cout << "Super Effective (again):" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Grass) * 100
-            << "% damage to a Grass PoCemon." << endl << endl;
-
-        cout << "DOUBLE Super Effective!:" << endl
-            << "A Fire attack does "
-            << Combat::getDmgMultiplier(Type::Fire, Type::Grass, Type::Bug) * 100
-            << "% damage to a PoCemon that is both Grass & Bug." << endl << endl << endl;
-
-
-
+        
         // 3. Lets you select an example PoCemon and displays its stats.
         cout << "*********************************" << endl
             << "** Example PoCemon Constructor **" << endl
