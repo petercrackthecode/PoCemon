@@ -22,7 +22,9 @@ public:
               const int &tempMaxPP,
               const int &tempStatusEffectChance);
 
-    bool use(Pocemon &attacker, Pocemon &defender);
+    virtual ~AttackAbility() {};
+
+    bool use(Pocemon &attacker, Pocemon &defender) override;
 
 private:
 

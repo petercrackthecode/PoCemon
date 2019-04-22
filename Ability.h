@@ -23,6 +23,8 @@ public:
         maxPP{ tempMaxPP }, statusEffectChance{ tempStatusEffectChance }
     {};
 
+    virtual ~Ability() {};
+
     virtual bool use(Pocemon &attacker, Pocemon &defender) = 0;
 	AbilityCategory getAbilityCategory() const { return abilityCategory; }
 	Type getType() const { return type; }
