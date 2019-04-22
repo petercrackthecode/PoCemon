@@ -3,6 +3,7 @@
 #include "PoCemonData.h"
 #include "Enums.h"
 #include <cmath>
+#include "string"
 #include <iostream>
 #include "Combat.h"
 #include "AttackStd.h"
@@ -161,3 +162,94 @@ int Pocemon::getStat(Stat type) const {
     return spDef;
 }
 
+void Pocemon::save() { 
+	ofstream input;
+	input.open("battlestat.txt");
+	input >> id >> "," >> level >> "," >> name >> "," >> type1 >> "," >> type2 >> "," >>
+		baseHp >> "," >> baseAtk >> "," >> baseDef >> "," >> baseSpeed >> "," >> baseSpAtk >> "," >>
+		baseSpDef >> "," >> ivHp >> "," >> ivAtk >> "," >> ivDef >> "," >> ivSpeed >> "," >> ivSpAtk
+		>> "," >> ivSpDef >> "," >> evHp >> "," >> evAtk >> "," >> evDef >> "," >> evSpeed >> "," >>
+		evSpAtk >> "," >> evSpDef >> "," >> hp >> "," >> atk >> "," >> def >> "," >> speed >> "," >>
+		spAtk >> "," >> spDef >> "," >> curHp >> "," >> curAtk >> "," >> curDef >> "," >> curSpeed
+		>> "," >> curSpAtk >> "," >> curSpDef >> ",";
+}
+void Pocemon::recreate() {
+	ifstream output;
+	output.open("battlestat.txt");
+	string str;
+	output << str;
+	str.resize(str.length - 1);
+	id = stoi(str);
+	str.resize(str.length - 1);
+	level = stoi(str);
+	str.resize(str.length - 1);
+	name = str;
+	str.resize(str.length - 1);
+	type1 = atoi(str.c_str() + 1);
+	str.resize(str.length - 1);
+	type2 = atoi(str.c_str() + 1);
+	str.resize(str.length - 1);
+	baseHp = stoi(str);
+	str.resize(str.length - 1);
+	baseAtk = stoi(str);
+	str.resize(str.length - 1);
+	baseDef = stoi(str);
+	str.resize(str.length - 1);
+	baseSpeed = stoi(str);
+	str.resize(str.length - 1);
+	baseSpAtk = stoi(str);
+	str.resize(str.length - 1);
+	baseSpDef = stoi(str);
+	//
+	str.resize(str.length - 1);
+	ivHp = stoi(str);
+	str.resize(str.length - 1);
+	ivAtk = stoi(str);
+	str.resize(str.length - 1);
+	ivDef = stoi(str);
+	str.resize(str.length - 1);
+	ivSpeed = stoi(str);
+	str.resize(str.length - 1);
+	ivSpAtk = stoi(str);
+	str.resize(str.length - 1);
+	ivSpDef = stoi(str);
+	//
+	str.resize(str.length - 1);
+	evHp = stoi(str);
+	str.resize(str.length - 1);
+	evAtk = stoi(str);
+	str.resize(str.length - 1);
+	evDef = stoi(str);
+	str.resize(str.length - 1);
+	evSpeed = stoi(str);
+	str.resize(str.length - 1);
+	evSpAtk = stoi(str);
+	str.resize(str.length - 1);
+	evSpDef = stoi(str);
+	//
+	str.resize(str.length - 1);
+	hp = stoi(str);
+	str.resize(str.length - 1);
+	atk = stoi(str);
+	str.resize(str.length - 1);
+	def = stoi(str);
+	str.resize(str.length - 1);
+	speed = stoi(str);
+	str.resize(str.length - 1);
+	spAtk = stoi(str);
+	str.resize(str.length - 1);
+	spDef = stoi(str);
+	//
+	str.resize(str.length - 1);
+	curHp = stoi(str);
+	str.resize(str.length - 1);
+	curAtk = stoi(str);
+	str.resize(str.length - 1);
+	curDef = stoi(str);
+	str.resize(str.length - 1);
+	curSpeed = stoi(str);
+	str.resize(str.length - 1);
+	curSpAtk = stoi(str);
+	str.resize(str.length - 1);
+	curSpDef = stoi(str);
+}
