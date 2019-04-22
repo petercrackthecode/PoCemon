@@ -134,7 +134,7 @@ void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 }
 
 
-void Pocemon::displayInfo(bool detailed /*= false*/)
+void Pocemon::displayInfo(bool detailed /*= false*/) const
 {
     cout << endl;
     cout << this->name << ", lvl " << this->level << endl;

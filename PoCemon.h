@@ -14,14 +14,10 @@ public:
 
 	void doDamage(const AttackAbility &attack, Pocemon &pocemon1);
 
-    void displayInfo(bool detailed = false);
+    void displayInfo(bool detailed = false) const;
 
     void resetCurStats();
 
-    template <class BasicAttributeReturn>
-    BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
-
-    int getStat(Stat type) const;
     PkmnId getId() const { return id; };
     int getLevel() const { return level; };
 
@@ -42,6 +38,11 @@ public:
     int getOriginalSpeed() const { return speed; };
     int getOriginalSpAtk() const { return spAtk; };
     int getOriginalSpDef() const { return spDef; };
+
+
+    template <class BasicAttributeReturn>
+    BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
+    int getStat(Stat type) const;
 
     // *******************************************************
     // *** Everything below will be private in the future: ***
