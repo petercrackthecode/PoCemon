@@ -108,8 +108,19 @@ void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 	double modifier = attack.getDmgMultiplier(defendingPocemon);
 	
 #pragma warning(suppress : 4244) // Supress conversion warning (from double to int)
-	int damage = ((((2 + (2 * this->level / 5)) * attack.getPower() * (tempAtk / tempDef) / 50) + 2 ) * modifier ); // TODO: double check proper order for "(2 * this->level / 5)"
-	
+	int damage = ((((((((2 * this->level) / 5) + 2) * attack.getPower() * tempAtk) / tempDef) / 50) + 2) * modifier);
+
+    //***********************************************
+    // Step-by-step flow of the damage calculation:
+    //***********************************************
+    //int damage = 2 * this->level;
+    //damage = damage / 5;
+    //damage = damage + 2;
+    //damage = damage * tempAtk * attack.getPower();
+    //damage = damage / tempDef;
+    //damage = damage / 50;
+    //damage = damage + 2;
+    //damage = damage * modifier;
 
     // Random modifier
     // Description: Multiply 'damage' by a random percentage between 0.85 (217÷255) and 1.00 (255÷255).
