@@ -52,7 +52,6 @@ bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
     }
 
     cout << "Attack hit!" << endl;
-    defender.displayInfo();
     attacker.doDamage(*this, defender);
     defender.displayInfo();
 
