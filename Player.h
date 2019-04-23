@@ -12,10 +12,11 @@ class Player
 public:
     Player(const string &tempName);
     void addToTeam(Pocemon &);
-    Pocemon operator[](const int &i);
+    Pocemon& operator[](const int &i);
     void visitPoceCenter();
+    void generateRandomTeam(const int &minLvl = 75, const int &maxLvl = 95);
     void displayTeam();
-
+    Pocemon* getActivePocemon();
 
     // *******************************************************
     // *** Everything below will be private in the future: ***
@@ -23,7 +24,7 @@ public:
 
     string name;
     vector<Pocemon> pocemonTeam;
-
+    int activePocemonIndex;
 
 
 
