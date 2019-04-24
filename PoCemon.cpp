@@ -84,6 +84,68 @@ void Pocemon::resetCurStats()
     curSpeed = speed;
     curSpAtk = spAtk;
     curSpDef = spDef;
+
+    statStages.atk = 0;
+    statStages.def = 0;
+    statStages.spAtk = 0;
+    statStages.spDef = 0;
+    statStages.speed = 0;
+    statStages.accuracy = 0;
+    statStages.evasion = 0;
+    statStages.criticalHitRatio = 0;
+}
+
+
+int Pocemon::applyStatStage(const int &statVal, const int &stage) const
+{
+    if (stage > 6 || stage < -6)
+        throw "Invalid Stat Stage."; // TODO: Exception class.
+
+    // Positive Stat Stages increase the numerator.
+    // Negative Stat Stages increase the denominator.
+    int numerator = 2;
+    int denominator = 2;
+
+    if (stage > 0)
+        numerator += stage;
+    else if (stage < 0)
+        denominator += -1 * stage;
+
+    return (statVal * numerator) / denominator;
+
+}
+
+
+int& Pocemon::revealStatStage(Stat statStageType)
+{
+    if (statStageType == Stat::Atk) return statStages.atk;
+    else if (statStageType == Stat::Def) return statStages.def;
+    else if (statStageType == Stat::SpAttack) return statStages.spAtk;
+    else if (statStageType == Stat::SpDefense) return statStages.spDef;
+    else if (statStageType == Stat::Speed) return statStages.speed;
+    else if (statStageType == Stat::Accuracy) return statStages.accuracy;
+    else if (statStageType == Stat::Evasion) return statStages.evasion;
+    else if (statStageType == Stat::CriticalHitRatio) return statStages.criticalHitRatio;
+    else throw "Invalid Stat Stage Type"; // TODO: Exception class.
+}
+
+
+bool Pocemon::modifyStatStage(Stat statToModify, const int &numOfStages)
+{
+    int *tempStatStage = &revealStatStage(statToModify);
+
+    if (*tempStatStage >= 6 || *tempStatStage <= -6)
+        return false;
+
+    *tempStatStage += numOfStages;
+
+    if (*tempStatStage >= 6)
+        *tempStatStage = 6;
+
+    if (*tempStatStage <= -6)
+        *tempStatStage = -6;
+
+    return true;
 }
 
 
@@ -94,13 +156,13 @@ void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 
     if (attack.getAbilityCategory() == AbilityCategory::Physical)
     {
-        tempAtk = this->curAtk;
-        tempDef = defendingPocemon.curDef;
+        tempAtk = this->getCurAtk();
+        tempDef = defendingPocemon.getCurDef();
     }
     else // if (attack.getAbilityCategory() == AbilityCategory::Special)
     {
-        tempAtk = this->curSpAtk;
-        tempDef = defendingPocemon.curSpDef;
+        tempAtk = this->getCurSpAtk();
+        tempDef = defendingPocemon.getCurSpDef();
     }
 
 
@@ -159,20 +221,20 @@ void Pocemon::displayInfo(bool detailed /*= false*/) const
         << setw(6) << "speed" << endl;
 
     cout << setw(9) << "Current:"
-        << setw(6) << this->curHp
-        << setw(6) << this->curAtk
-        << setw(6) << this->curDef
-        << setw(6) << this->curSpAtk
-        << setw(6) << this->curSpDef
-        << setw(6) << this->curSpeed << endl;
+        << setw(6) << this->getCurHp()
+        << setw(6) << this->getCurAtk()
+        << setw(6) << this->getCurDef()
+        << setw(6) << this->getCurSpAtk()
+        << setw(6) << this->getCurSpDef()
+        << setw(6) << this->getCurSpeed() << endl;
 
     cout << setw(9) << "Original:"
-        << setw(6) << this->hp
-        << setw(6) << this->atk
-        << setw(6) << this->def
-        << setw(6) << this->spAtk
-        << setw(6) << this->spDef
-        << setw(6) << this->speed << endl;
+        << setw(6) << this->getOriginalHp()
+        << setw(6) << this->getOriginalAtk()
+        << setw(6) << this->getOriginalDef()
+        << setw(6) << this->getOriginalSpAtk()
+        << setw(6) << this->getOriginalSpDef()
+        << setw(6) << this->getOriginalSpeed() << endl;
 
     if (detailed)
     {
@@ -218,10 +280,10 @@ BasicAttributeReturn Pocemon::getBasicAttribute(BasicAttribute type) const {
 
 
 int Pocemon::getStat(Stat type) const {
-    if (type == Stat::hp) return hp;
-    if (type == Stat::attack) return atk;
-    if (type == Stat::speed) return speed;
-    if (type == Stat::spAttack) return spAtk;
+    if (type == Stat::Hp) return hp;
+    if (type == Stat::Atk) return atk;
+    if (type == Stat::Speed) return speed;
+    if (type == Stat::SpAttack) return spAtk;
 
     return spDef;
 }
