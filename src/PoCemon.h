@@ -26,11 +26,11 @@ public:
     Type getType2() const { return type2; };
 
     int getCurHp() const { return curHp; };
-    int getCurAtk() const { return curAtk; };
-    int getCurDef() const { return curDef; };
-    int getCurSpeed() const { return curSpeed; };
-    int getCurSpAtk() const { return curSpAtk; };
-    int getCurSpDef() const { return curSpDef; };
+    int getCurAtk() const { return applyStatStage(atk, statStages.atk); };
+    int getCurDef() const { return applyStatStage(def, statStages.def); };
+    int getCurSpeed() const { return applyStatStage(speed, statStages.speed); };
+    int getCurSpAtk() const { return applyStatStage(spAtk, statStages.spAtk); };
+    int getCurSpDef() const { return applyStatStage(spDef, statStages.spDef); };
 
     int getOriginalHp() const { return hp; };
     int getOriginalAtk() const { return atk; };
@@ -39,6 +39,11 @@ public:
     int getOriginalSpAtk() const { return spAtk; };
     int getOriginalSpDef() const { return spDef; };
 
+    int getAccuracyStage() const { return statStages.accuracy; };
+    int getEvasionStage() const { return statStages.evasion; };
+    int getCriticalHitRatioStage() const { return statStages.criticalHitRatio; };
+
+    bool modifyStatStage(Stat statToModify, const int &numOfStages);
 
     template <class BasicAttributeReturn>
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
@@ -56,6 +61,9 @@ public:
                              const int &evStat = 0,
                              const bool &isHp = false);
 
+    int& revealStatStage(Stat statStage);
+
+    int applyStatStage(const int &statVal, const int &stage) const;
 
     PkmnId id;
     int level;
@@ -107,7 +115,18 @@ public:
     int evSpAtk;
     int evSpDef;
 
-	
+    struct StatStages {
+        int atk;
+        int def;
+        int speed;
+        int spAtk;
+        int spDef;
+        int accuracy;
+        int evasion;
+        int criticalHitRatio;
+    };
+
+    StatStages statStages;
 
 };
 
