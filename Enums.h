@@ -21,13 +21,59 @@ enum class BasicAttribute {
 
 enum class Stat
 {
-    hp,
-    attack,
-    def,
-    speed,
-    spAttack,
-    spDefense
+    None,
+    Hp,
+    Atk,
+    Def,
+    Speed,
+    SpAttack,
+    SpDefense,
+    Accuracy,
+    Evasion,
+    CriticalHitRatio
 };
+
+
+enum class StatusEffect
+{
+    None,
+    Flinch,
+    Bind,
+    Burn,
+    Confuse,
+    Freeze,
+    Paralyze,
+    Poison,
+    PoisonBadly,
+    Sleep,
+    BurnFreezeParalyze,
+    Hp,
+    Atk1x,
+    Atk2x,
+    Atk3x,
+    Def1x,
+    Def2x,
+    Def3x,
+    Speed1x,
+    Speed2x,
+    Speed3x,
+    SpAtk1x,
+    SpAtk2x,
+    SpAtk3x,
+    SpDef1x,
+    SpDef2x,
+    SpDef3x,
+    Accuracy1x,
+    Accuracy2x,
+    Accuracy3x,
+    Evasion1x,
+    Evasion2x,
+    Evasion3x,
+    CriticalHitRatio1x,
+    CriticalHitRatio2x,
+    CriticalHitRatio3x
+};
+
 
 enum class AbilityCategory
 {
@@ -248,6 +294,7 @@ enum class PkmnId
 
 enum class AbilityId
 {
+    undefined = 0,
     Absorb = 71,
     Acid = 51,
     AcidArmor = 151,
