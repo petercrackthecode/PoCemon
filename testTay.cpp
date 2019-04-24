@@ -8,12 +8,23 @@ using namespace std;
 
 void tay()
 {
+    //Pocemon testAttacker(PkmnId::Aerodactyl, 99);
+    //Pocemon testDefender(PkmnId::Abra, 99);
 
+    // Player 1 & Player 2 Names
+    string p1Name;
+    string p2Name;
+
+    cout << "Enter each player's name." << endl;
+    cout << "Player 1: ";
+    cin >> p1Name;
+    cout << "Player 2: ";
+    cin >> p2Name;
+    
 
     AttackAbility attack(2, "Kate", "Hi there", Type::Normal, AbilityCategory::Physical, 3, 4, 5, 6);
 
-    //Pocemon testAttacker(PkmnId::Aerodactyl, 99);
-    //Pocemon testDefender(PkmnId::Abra, 99);
+    
 
     AttackAbility megaPunch(5, "Mega Punch", "", Type::Normal, AbilityCategory::Physical, 80, 216, 20, 0);
 
@@ -34,7 +45,12 @@ void tay()
     p1Active->displayInfo();
 
     Pocemon *p2Active = player2.getActivePocemon();
+    cout << "**********************************\n";
+    cout << "Testing Stat Stages (-2 to Def):\n";
+    cout << "**********************************";
+    p2Active->modifyStatStage(Stat::Def, -2);
     p2Active->displayInfo();
+    cin.get();
 
     cout << "...\n...\n";
 
