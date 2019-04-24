@@ -26,6 +26,8 @@ public:
 
     bool use(Pocemon &attacker, Pocemon &defender) override;
 
+    int calculateHitThreshold(Pocemon &attacker, Pocemon &defender) const;
+
 private:
 
 };

@@ -35,10 +35,29 @@ AttackAbility::AttackAbility(const int &tempId,
 }
 
 
+int AttackAbility::calculateHitThreshold(Pocemon &attacker, Pocemon &defender) const
+{
+    int combinedStatStage = attacker.getAccuracyStage() - defender.getEvasionStage();
+
+    // Positive Combined Stat Stages increase the numerator.
+    // Negative Combined Stat Stages increase the denominator.
+    int numerator = 3;
+    int denominator = 3;
+
+    if (combinedStatStage > 0)
+        numerator += combinedStatStage;
+    else if (combinedStatStage < 0)
+        denominator += -1 * combinedStatStage;
+
+    return (this->accuracy * numerator) / denominator;
+
+}
+
+
 bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 {
     int random = randomGenerator();
-    int threshold = this->accuracy * 1 * 1;
+    int threshold = calculateHitThreshold(attacker, defender);
 
     if (threshold <= 0)
         threshold = 1;
@@ -239,6 +258,130 @@ bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 { 127, "Waterfall", "May cause flinching.", Type::Water, AbilityCategory::Physical, 80, 255, 15, 0 },
 { 17, "Wing Attack", "", Type::Flying, AbilityCategory::Physical, 60, 255, 35, 0 },
 { 35, "Wrap", "Traps opponent, damaging them for 4-5 turns.", Type::Normal, AbilityCategory::Physical, 15, 216, 20, 0 },
+
+
+
+
+
+
+
+
+
+
+
+
+
+{ AbilityId::Absorb, "Absorb", "User recovers half the HP inflicted on opponent.", Type::Grass, AbilityCategory::Special, 20, 255, 25, 0 },
+{ AbilityId::Acid, "Acid", "May lower opponent's Special Defense.", Type::Poison, AbilityCategory::Special, 40, 255, 30, 25 },
+{ AbilityId::AuroraBeam, "Aurora Beam", "May lower opponent's Attack.", Type::Ice, AbilityCategory::Special, 65, 255, 20, 25 },
+{ AbilityId::Barrage, "Barrage", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 15, 216, 20, 0 },
+{ AbilityId::Bide, "Bide", "User takes damage for two turns then strikes back double.", Type::Normal, AbilityCategory::Physical, 0, 255, 10, 0 },
+{ AbilityId::Bind, "Bind", "Traps opponent, damaging them for 4-5 turns.", Type::Normal, AbilityCategory::Physical, 15, 191, 20, 0 },
+{ AbilityId::Bite, "Bite", "May cause flinching.", Type::Dark, AbilityCategory::Physical, 60, 255, 25, 0 },
+{ AbilityId::Blizzard, "Blizzard", "May freeze opponent.", Type::Ice, AbilityCategory::Special, 110, 229, 5, 25 },
+{ AbilityId::BodySlam, "Body Slam", "May paralyze opponent.", Type::Normal, AbilityCategory::Physical, 85, 255, 15, 76 },
+{ AbilityId::BoneClub, "Bone Club", "May cause flinching.", Type::Ground, AbilityCategory::Physical, 65, 216, 20, 25 },
+{ AbilityId::Bonemerang, "Bonemerang", "Hits twice in one turn.", Type::Ground, AbilityCategory::Physical, 50, 229, 10, 0 },
+{ AbilityId::Bubble, "Bubble", "May lower opponent's Speed.", Type::Water, AbilityCategory::Special, 40, 255, 30, 25 },
+{ AbilityId::BubbleBeam, "Bubble Beam", "May lower opponent's Speed.", Type::Water, AbilityCategory::Special, 65, 255, 20, 25 },
+{ AbilityId::Clamp, "Clamp", "Traps opponent, damaging them for 4-5 turns.", Type::Water, AbilityCategory::Physical, 35, 191, 10, 0 },
+{ AbilityId::CometPunch, "Comet Punch", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 18, 216, 15, 0 },
+{ AbilityId::Confusion, "Confusion", "May confuse opponent.", Type::Psychic, AbilityCategory::Special, 50, 255, 25, 25 },
+{ AbilityId::Constrict, "Constrict", "May lower opponent's Speed by one stage.", Type::Normal, AbilityCategory::Physical, 10, 255, 35, 25 },
+{ AbilityId::Counter, "Counter", "When hit by a AbilityCategory::Physical Attack, user strikes back with 2x power.", Type::Fighting, AbilityCategory::Physical, 0, 255, 20, 0 },
+{ AbilityId::Crabhammer, "Crabhammer", "High critical hit ratio.", Type::Water, AbilityCategory::Physical, 100, 216, 10, 0 },
+{ AbilityId::Cut, "Cut", "", Type::Normal, AbilityCategory::Physical, 50, 242, 30, 0 },
+{ AbilityId::Dig, "Dig", "Digs underground on first turn, attacks on second. Can also escape from caves.", Type::Ground, AbilityCategory::Physical, 80, 255, 10, 0 },
+{ AbilityId::DizzyPunch, "Dizzy Punch", "May confuse opponent.", Type::Normal, AbilityCategory::Physical, 70, 255, 10, 51 },
+{ AbilityId::DoubleKick, "Double Kick", "Hits twice in one turn.", Type::Fighting, AbilityCategory::Physical, 30, 255, 30, 0 },
+{ AbilityId::DoubleSlap, "Double Slap", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 15, 216, 10, 0 },
+{ AbilityId::DoubleEdge, "Double-Edge", "User receives recoil damage.", Type::Normal, AbilityCategory::Physical, 120, 255, 15, 0 },
+{ AbilityId::DragonRage, "Dragon Rage", "Always inflicts 40 HP.", Type::Dragon, AbilityCategory::Special, 0, 255, 10, 0 },
+{ AbilityId::DreamEater, "Dream Eater", "User recovers half the HP inflicted on a sleeping opponent.", Type::Psychic, AbilityCategory::Special, 100, 255, 15, 0 },
+{ AbilityId::DrillPeck, "Drill Peck", "", Type::Flying, AbilityCategory::Physical, 80, 255, 20, 0 },
+{ AbilityId::Earthquake, "Earthquake", "Power is doubled if opponent is underground from using Dig.", Type::Ground, AbilityCategory::Physical, 100, 255, 10, 0 },
+{ AbilityId::EggBomb, "Egg Bomb", "", Type::Normal, AbilityCategory::Physical, 100, 191, 10, 0 },
+{ AbilityId::Ember, "Ember", "May burn opponent.", Type::Fire, AbilityCategory::Special, 40, 255, 25, 25 },
+{ AbilityId::Explosion, "Explosion", "User faints.", Type::Normal, AbilityCategory::Physical, 250, 255, 5, 0 },
+{ AbilityId::FireBlast, "Fire Blast", "May burn opponent.", Type::Fire, AbilityCategory::Special, 110, 216, 5, 25 },
+{ AbilityId::FirePunch, "Fire Punch", "May burn opponent.", Type::Fire, AbilityCategory::Physical, 75, 255, 15, 25 },
+{ AbilityId::FireSpin, "Fire Spin", "Traps opponent, damaging them for 4-5 turns.", Type::Fire, AbilityCategory::Special, 35, 178, 15, 0 },
+{ AbilityId::Fissure, "Fissure", "One-Hit-KO, if it hits.", Type::Ground, AbilityCategory::Physical, 0, 76, 5, 0 },
+{ AbilityId::Flamethrower, "Flamethrower", "May burn opponent.", Type::Fire, AbilityCategory::Special, 90, 255, 15, 25 },
+{ AbilityId::Fly, "Fly", "Flies up on first turn, attacks on second turn.", Type::Flying, AbilityCategory::Physical, 90, 242, 15, 0 },
+{ AbilityId::FuryAttack, "Fury Attack", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 15, 216, 20, 0 },
+{ AbilityId::FurySwipes, "Fury Swipes", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 18, 204, 15, 0 },
+{ AbilityId::Guillotine, "Guillotine", "One-Hit-KO, if it hits.", Type::Normal, AbilityCategory::Physical, 0, 76, 5, 0 },
+{ AbilityId::Gust, "Gust", "Hits Pokemon using Fly/Bounce with double power.", Type::Flying, AbilityCategory::Special, 40, 255, 35, 0 },
+{ AbilityId::Headbutt, "Headbutt", "May cause flinching.", Type::Normal, AbilityCategory::Physical, 70, 255, 15, 76 },
+{ AbilityId::HighJumpKick, "High Jump Kick", "If it misses, the user loses half their HP.", Type::Fighting, AbilityCategory::Physical, 130, 229, 10, 0 },
+{ AbilityId::HornAttack, "Horn Attack", "", Type::Normal, AbilityCategory::Physical, 65, 255, 25, 0 },
+{ AbilityId::HornDrill, "Horn Drill", "One-Hit-KO, if it hits.", Type::Normal, AbilityCategory::Physical, 0, 76, 5, 0 },
+{ AbilityId::HydroPump, "Hydro Pump", "", Type::Water, AbilityCategory::Special, 110, 204, 5, 0 },
+{ AbilityId::HyperBeam, "Hyper Beam", "User must recharge next turn.", Type::Normal, AbilityCategory::Special, 150, 229, 5, 0 },
+{ AbilityId::HyperFang, "Hyper Fang", "May cause flinching.", Type::Normal, AbilityCategory::Physical, 80, 229, 15, 25 },
+{ AbilityId::IceBeam, "Ice Beam", "May freeze opponent.", Type::Ice, AbilityCategory::Special, 90, 255, 10, 25 },
+{ AbilityId::IcePunch, "Ice Punch", "May freeze opponent.", Type::Ice, AbilityCategory::Physical, 75, 255, 15, 25 },
+{ AbilityId::JumpKick, "Jump Kick", "If it misses, the user loses half their HP.", Type::Fighting, AbilityCategory::Physical, 100, 242, 10, 0 },
+{ AbilityId::KarateChop, "Karate Chop", "High critical hit ratio.", Type::Fighting, AbilityCategory::Physical, 50, 255, 25, 0 },
+{ AbilityId::LeechLife, "Leech Life", "User recovers half the HP inflicted on opponent.", Type::Bug, AbilityCategory::Physical, 80, 255, 10, 0 },
+{ AbilityId::Lick, "Lick", "May paralyze opponent.", Type::Ghost, AbilityCategory::Physical, 30, 255, 30, 76 },
+{ AbilityId::LowKick, "Low Kick", "The heavier the opponent, the stronger the attack.", Type::Fighting, AbilityCategory::Physical, 0, 229, 20, 76 },
+{ AbilityId::MegaDrain, "Mega Drain", "User recovers half the HP inflicted on opponent.", Type::Grass, AbilityCategory::Special, 40, 255, 15, 0 },
+{ AbilityId::MegaKick, "Mega Kick", "", Type::Normal, AbilityCategory::Physical, 120, 191, 5, 0 },
+{ AbilityId::MegaPunch, "Mega Punch", "", Type::Normal, AbilityCategory::Physical, 80, 216, 20, 0 },
+{ AbilityId::NightShade, "Night Shade", "Inflicts damage equal to user's level.", Type::Ghost, AbilityCategory::Special, 0, 255, 15, 0 },
+{ AbilityId::PayDay, "Pay Day", "A small amount of money is gained after the battle resolves.", Type::Normal, AbilityCategory::Physical, 40, 255, 20, 0 },
+{ AbilityId::Peck, "Peck", "", Type::Flying, AbilityCategory::Physical, 35, 255, 35, 0 },
+{ AbilityId::PetalDance, "Petal Dance", "User attacks for 2-3 turns but then becomes confused.", Type::Grass, AbilityCategory::Special, 120, 255, 10, 0 },
+{ AbilityId::PinMissile, "Pin Missile", "Hits 2-5 times in one turn.", Type::Bug, AbilityCategory::Physical, 25, 216, 20, 0 },
+{ AbilityId::PoisonSting, "Poison Sting", "May poison the opponent.", Type::Poison, AbilityCategory::Physical, 15, 255, 35, 51 },
+{ AbilityId::Pound, "Pound", "", Type::Normal, AbilityCategory::Physical, 40, 255, 35, 0 },
+{ AbilityId::Psybeam, "Psybeam", "May confuse opponent.", Type::Psychic, AbilityCategory::Special, 65, 255, 20, 25 },
+{ AbilityId::Psychic, "Psychic", "May lower opponent's Special Defense.", Type::Psychic, AbilityCategory::Special, 90, 255, 10, 25 },
+{ AbilityId::Psywave, "Psywave", "Inflicts damage 50-150% of user's level.", Type::Psychic, AbilityCategory::Special, 0, 204, 15, 0 },
+{ AbilityId::QuickAttack, "Quick Attack", "User attacks first.", Type::Normal, AbilityCategory::Physical, 40, 255, 30, 0 },
+{ AbilityId::Rage, "Rage", "Raises user's Attack when hit.", Type::Normal, AbilityCategory::Physical, 20, 255, 20, 0 },
+{ AbilityId::RazorLeaf, "Razor Leaf", "High critical hit ratio.", Type::Grass, AbilityCategory::Physical, 55, 242, 25, 0 },
+{ AbilityId::RazorWind, "Razor Wind", "Charges on first turn, attacks on second. High critical hit ratio.", Type::Normal, AbilityCategory::Special, 80, 191, 10, 0 },
+{ AbilityId::RockSlide, "Rock Slide", "May cause flinching.", Type::Rock, AbilityCategory::Physical, 75, 229, 10, 76 },
+{ AbilityId::RockThrow, "Rock Throw", "", Type::Rock, AbilityCategory::Physical, 50, 64.7, 15, 0 },
+{ AbilityId::RollingKick, "Rolling Kick", "May cause flinching.", Type::Fighting, AbilityCategory::Physical, 60, 216, 15, 76 },
+{ AbilityId::Scratch, "Scratch", "", Type::Normal, AbilityCategory::Physical, 40, 255, 35, 0 },
+{ AbilityId::SeismicToss, "Seismic Toss", "Inflicts damage equal to user's level.", Type::Fighting, AbilityCategory::Physical, 0, 255, 20, 0 },
+{ AbilityId::SelfDestruct, "Self-Destruct", "User faints.", Type::Normal, AbilityCategory::Physical, 200, 255, 5, 0 },
+{ AbilityId::SkullBash, "Skull Bash", "Raises Defense on first turn, attacks on second.", Type::Normal, AbilityCategory::Physical, 130, 255, 10, 0 },
+{ AbilityId::SkyAttack, "Sky Attack", "Charges on first turn, attacks on second. May cause flinching.", Type::Flying, AbilityCategory::Physical, 140, 229, 5, 0 },
+{ AbilityId::Slam, "Slam", "", Type::Normal, AbilityCategory::Physical, 80, 191, 20, 0 },
+{ AbilityId::Slash, "Slash", "High critical hit ratio.", Type::Normal, AbilityCategory::Physical, 70, 255, 20, 0 },
+{ AbilityId::Sludge, "Sludge", "May poison opponent.", Type::Poison, AbilityCategory::Special, 65, 255, 20, 76 },
+{ AbilityId::Smog, "Smog", "May poison opponent.", Type::Poison, AbilityCategory::Special, 30, 178, 20, 102 },
+{ AbilityId::SolarBeam, "Solar Beam", "Charges on first turn, attacks on second.", Type::Grass, AbilityCategory::Special, 120, 255, 10, 0 },
+{ AbilityId::SonicBoom, "Sonic Boom", "Always inflicts 20 HP.", Type::Normal, AbilityCategory::Special, 0, 229, 20, 0 },
+{ AbilityId::SpikeCannon, "Spike Cannon", "Hits 2-5 times in one turn.", Type::Normal, AbilityCategory::Physical, 20, 255, 15, 0 },
+{ AbilityId::Stomp, "Stomp", "May cause flinching.", Type::Normal, AbilityCategory::Physical, 65, 255, 20, 76 },
+{ AbilityId::Strength, "Strength", "", Type::Normal, AbilityCategory::Physical, 80, 255, 15, 0 },
+{ AbilityId::Struggle, "Struggle", "Only usable when all PP are gone. Hurts the user.", Type::Normal, AbilityCategory::Physical, 50, 255, 0, 0 },
+{ AbilityId::Submission, "Submission", "User receives recoil damage.", Type::Fighting, AbilityCategory::Physical, 80, 204, 20, 0 },
+{ AbilityId::SuperFang, "Super Fang", "Always takes off half of the opponent's HP.", Type::Normal, AbilityCategory::Physical, 0, 229, 10, 0 },
+{ AbilityId::Surf, "Surf", "Hits all adjacent Pokemon.", Type::Water, AbilityCategory::Special, 90, 255, 15, 0 },
+{ AbilityId::Swift, "Swift", "Ignores Accuracy and Evasiveness.", Type::Normal, AbilityCategory::Special, 60, 255, 20, 0 },
+{ AbilityId::Tackle, "Tackle", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0 },
+{ AbilityId::TakeDown, "Take Down", "User receives recoil damage.", Type::Normal, AbilityCategory::Physical, 90, 216, 20, 0 },
+{ AbilityId::Thrash, "Thrash", "User attacks for 2-3 turns but then becomes confused.", Type::Normal, AbilityCategory::Physical, 120, 255, 10, 0 },
+{ AbilityId::Thunder, "Thunder", "May paralyze opponent.", Type::Electric, AbilityCategory::Special, 110, 178, 10, 25 },
+{ AbilityId::ThunderPunch, "Thunder Punch", "May paralyze opponent.", Type::Electric, AbilityCategory::Physical, 75, 255, 15, 25 },
+{ AbilityId::ThunderShock, "Thunder Shock", "May paralyze opponent.", Type::Electric, AbilityCategory::Special, 40, 255, 30, 0 },
+{ AbilityId::Thunderbolt, "Thunderbolt", "May paralyze opponent.", Type::Electric, AbilityCategory::Special, 90, 255, 15, 25 },
+{ AbilityId::TriAttack, "Tri Attack", "May paralyze, burn or freeze opponent.", Type::Normal, AbilityCategory::Special, 80, 255, 10, 0 },
+{ AbilityId::Twineedle, "Twineedle", "Hits twice in one turn. May poison opponent.", Type::Bug, AbilityCategory::Physical, 25, 255, 20, 0 },
+{ AbilityId::ViceGrip, "Vice Grip", "", Type::Normal, AbilityCategory::Physical, 55, 255, 30, 0 },
+{ AbilityId::VineWhip, "Vine Whip", "", Type::Grass, AbilityCategory::Physical, 45, 255, 25, 0 },
+{ AbilityId::WaterGun, "Water Gun", "", Type::Water, AbilityCategory::Special, 40, 255, 25, 0 },
+{ AbilityId::Waterfall, "Waterfall", "May cause flinching.", Type::Water, AbilityCategory::Physical, 80, 255, 15, 0 },
+{ AbilityId::WingAttack, "Wing Attack", "", Type::Flying, AbilityCategory::Physical, 60, 255, 35, 0 },
+{ AbilityId::Wrap, "Wrap", "Traps opponent, damaging them for 4-5 turns.", Type::Normal, AbilityCategory::Physical, 15, 216, 20, 0 },
+
 
 
 
