@@ -60,9 +60,10 @@ protected:
         const int accuracy;
         const int maxPP;
         const int statusEffectChance;
+        const StatusEffect statusEffectType;
     };
 
-    const static AbilityData allAbilityData[55];
+    const static AbilityData allAbilityData[165];
 
 };
 
