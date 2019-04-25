@@ -4,7 +4,7 @@ project(PoCemon VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_executable (PoCemon "main.cpp" "PoCemon.cpp" "PoCemon.h" "PoCemonData.cpp" "PoCemonData.h" "Enums.h" "testTay.cpp" "testAman.cpp" "testPeter.cpp" "testKate.cpp" "Ability.cpp" "Ability.h" "AttackAbility.cpp" "AttackAbility.h" "randomGenerator.cpp" "randomGenerator.h" "Player.h" "Player.cpp")
+add_executable (PoCemon "main.cpp" "PoCemon.cpp" "PoCemon.h" "PoCemonData.cpp" "PoCemonData.h" "Enums.h" "testTay.cpp" "testAman.cpp" "testPeter.cpp" "testKate.cpp" "Ability.cpp" "Ability.h" "AttackAbility.cpp" "AttackAbility.h" "randomGenerator.cpp" "randomGenerator.h" "Player.h" "Player.cpp" "AbilityFactory.h" "AbilityFactory.cpp")
 include_directories("${CMAKE_SOURCE_DIR}")
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT PoCemon)
 
