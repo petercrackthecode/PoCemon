@@ -8,7 +8,7 @@ class Pocemon;
 class Ability
 {
 public:
-    Ability(const int &tempId,
+    Ability(const AbilityId &tempId,
             const std::string &tempName,
             const std::string &tempDescription,
             //const std::string &tempDevDescription,
@@ -17,12 +17,13 @@ public:
             const int &tempPower,
             const int &tempAccuracy,
             const int &tempMaxPP,
-            const int &tempStatusEffectChance)
+            const int &tempStatusEffectChance,
+            const StatusEffect &tempStatusEffectType)
         : id{ tempId }, name{ tempName }, description{ tempDescription }, type{ tempType },
         abilityCategory{ tempAbilityCategory }, power{ tempPower }, accuracy{ tempAccuracy },
-        maxPP{ tempMaxPP }, statusEffectChance{ tempStatusEffectChance }
+        maxPP{ tempMaxPP }, statusEffectChance{ tempStatusEffectChance }, statusEffectType{ tempStatusEffectType }
     {};
-
+    
     virtual ~Ability() {};
 
     virtual bool use(Pocemon &attacker, Pocemon &defender) = 0;
@@ -35,7 +36,7 @@ public:
     static const float dmgMultTbl[][19];
 
 protected:
-    const int id; // TODO: Change to AbilityId
+    const AbilityId id; // TODO: Change to AbilityId
     const std::string name;
     const std::string description;
     const std::string devDescription; // Just saving a description for us to reference.
@@ -46,24 +47,26 @@ protected:
     const int accuracy;
     const int maxPP;
     const int statusEffectChance;
+    const StatusEffect statusEffectType;
 
-    struct AbilityData
-    {
-        const AbilityId id;
-        const std::string name;
-        const std::string description;
-        //const std::string devDescription; // Just saving a description for us to reference.
-        const Type type;
-        const AbilityCategory abilityCategory;
+    //struct AbilityData
+    //{
+    //    const AbilityId id;
+    //    const std::string name;
+    //    const std::string description;
+    //    //const std::string devDescription; // Just saving a description for us to reference.
+    //    const Type type;
+    //    const AbilityCategory abilityCategory;
 
-        const int power;
-        const int accuracy;
-        const int maxPP;
-        const int statusEffectChance;
-        const StatusEffect statusEffectType;
-    };
+    //    const int power;
+    //    const int accuracy;
+    //    const int maxPP;
+    //    const int statusEffectChance;
+    //    const StatusEffect statusEffectType;
+    //};
 
-    const static AbilityData allAbilityData[165];
+    //const static AbilityData allAbilityData[165];
+
 
 };
 
