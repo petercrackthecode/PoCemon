@@ -5,12 +5,10 @@
 #include <vector>
 #include "PoCemon.h"
 
-using namespace std;
-
 class Player
 {
 public:
-    Player(const string &tempName);
+    Player(const std::string &tempName);
     void addToTeam(Pocemon &);
     Pocemon& operator[](const int &i);
     void visitPoceCenter();
@@ -22,8 +20,8 @@ public:
     // *** Everything below will be private in the future: ***
     // *******************************************************
 
-    string name;
-    vector<Pocemon> pocemonTeam;
+    std::string name;
+    std::vector<Pocemon> pocemonTeam;
     int activePocemonIndex;
 
 
