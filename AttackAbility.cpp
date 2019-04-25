@@ -8,19 +8,20 @@
 using namespace std;
 
 // TODO: Rename to AttackAbility
-AttackAbility::AttackAbility(const int &tempId,
-                     const std::string &tempName,
-                     const std::string &tempDescription,
-                     //const std::string &tempDevDescription,
-                     const Type &tempType,
-                     const AbilityCategory &tempAbilityCategory,
-                     const int &tempPower,
-                     const int &tempAccuracy,
-                     const int &tempMaxPP,
-                     const int &tempStatusEffectChance)
+AttackAbility::AttackAbility(const AbilityId &tempId,
+                             const std::string &tempName,
+                             const std::string &tempDescription,
+                             //const std::string &tempDevDescription,
+                             const Type &tempType,
+                             const AbilityCategory &tempAbilityCategory,
+                             const int &tempPower,
+                             const int &tempAccuracy,
+                             const int &tempMaxPP,
+                             const int &tempStatusEffectChance,
+                             const StatusEffect &tempStatusEffectType)
                     : Ability{ tempId, tempName, tempDescription, tempType,
                                tempAbilityCategory, tempPower, tempAccuracy,
-                               tempMaxPP, tempStatusEffectChance }
+                               tempMaxPP, tempStatusEffectChance, tempStatusEffectType }
 {
     std::cout << this->description << std::endl;
     //id = tempId;
@@ -34,7 +35,8 @@ AttackAbility::AttackAbility(const int &tempId,
     //maxPP = tempMaxPP;
 }
 
-
+// Calculates the Hit Threshold (likelyhood of hitting with an attack) based on
+// the Attack's accuracy and the accuracy/evasion stat stages of the attacker/defender.
 int AttackAbility::calculateHitThreshold(Pocemon &attacker, Pocemon &defender) const
 {
     int combinedStatStage = attacker.getAccuracyStage() - defender.getEvasionStage();
@@ -49,22 +51,37 @@ int AttackAbility::calculateHitThreshold(Pocemon &attacker, Pocemon &defender) c
     else if (combinedStatStage < 0)
         denominator += -1 * combinedStatStage;
 
-    return (this->accuracy * numerator) / denominator;
+    int threshold = (this->accuracy * numerator) / denominator;
 
+    if (threshold < 1)
+        threshold = 1;
+    else if (threshold > 255)
+        threshold = 255;
+
+    return threshold;
+
+}
+
+// Determines whether an attack hits (true) or misses (false)
+bool AttackAbility::doesAttackHit(Pocemon &attacker, Pocemon &defender) const
+{
+    // Threshold is the likelyhood of hitting with an attack. The higher the number, the better.
+    int threshold = calculateHitThreshold(attacker, defender);
+
+    int outcome = threshold - randomGenerator();
+    
+    // if (threshold - RandomNumber) is a negative value, the attack missed.
+    if (outcome < 0)
+        return false;
+    else
+        return true;
 }
 
 
 bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 {
-    int random = randomGenerator();
-    int threshold = calculateHitThreshold(attacker, defender);
-
-    if (threshold <= 0)
-        threshold = 1;
-
     cout << attacker.name << " used " << this->name << "!" << endl;
-    cout << random << " <= " << threshold << " ?" << endl;
-    if (threshold < random)
+    if (doesAttackHit(attacker, defender))
     {
         cout << "Attack missed." << endl;
         return false; // Attack misses.

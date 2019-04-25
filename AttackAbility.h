@@ -11,22 +11,24 @@ class AttackAbility : public Ability
 {
 public:
 
-    AttackAbility(const int &tempId,
-              const std::string &tempName,
-              const std::string &tempDescription,
-              //const std::string &tempDevDescription,
-              const Type &tempType,
-              const AbilityCategory &tempAbilityCategory,
-              const int &tempPower,
-              const int &tempAccuracy,
-              const int &tempMaxPP,
-              const int &tempStatusEffectChance);
+    AttackAbility(const AbilityId &tempId,
+                  const std::string &tempName,
+                  const std::string &tempDescription,
+                  //const std::string &tempDevDescription,
+                  const Type &tempType,
+                  const AbilityCategory &tempAbilityCategory,
+                  const int &tempPower,
+                  const int &tempAccuracy,
+                  const int &tempMaxPP,
+                  const int &tempStatusEffectChance,
+                  const StatusEffect &tempStatusEffectType);
 
     virtual ~AttackAbility() {};
 
     bool use(Pocemon &attacker, Pocemon &defender) override;
 
     int calculateHitThreshold(Pocemon &attacker, Pocemon &defender) const;
+    bool doesAttackHit(Pocemon &attacker, Pocemon &defender) const;
 
 private:
 
