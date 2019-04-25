@@ -3,6 +3,7 @@
 #include "AttackAbility.h"
 #include "Player.h"
 #include "randomGenerator.h"
+#include "AbilityFactory.h"
 
 using namespace std;
 
@@ -21,12 +22,12 @@ void tay()
     cout << "Player 2: ";
     cin >> p2Name;
     
-
-    AttackAbility attack(2, "Kate", "Hi there", Type::Normal, AbilityCategory::Physical, 3, 4, 5, 6);
+    
+    AttackAbility attack(AbilityId::Acid, "Kate", "Hi there", Type::Normal, AbilityCategory::Physical, 3, 4, 5, 6, StatusEffect::None);
 
     
 
-    AttackAbility megaPunch(5, "Mega Punch", "", Type::Normal, AbilityCategory::Physical, 80, 216, 20, 0);
+    AttackAbility megaPunch(AbilityId::MegaPunch, "Mega Punch", "", Type::Normal, AbilityCategory::Physical, 80, 216, 20, 0, StatusEffect::None);
 
     Player player1("tay");
     player1.generateRandomTeam();
@@ -54,13 +55,15 @@ void tay()
 
     cout << "...\n...\n";
 
+    AbilityFactory::init();
+    Ability *testAbility = AbilityFactory::getAbility(AbilityId::Slam);
 
     //for (int i = 0; i < 20; ++i)
     while (player1.activePocemonIndex < 6) {
         p1Active = player1.getActivePocemon();
         p2Active = player2.getActivePocemon();
         while (p2Active->getCurHp() > 0)
-            megaPunch.use(*p1Active, *p2Active);
+            testAbility->use(*p1Active, *p2Active);
         player1.activePocemonIndex++;
         player2.activePocemonIndex++;
     }
