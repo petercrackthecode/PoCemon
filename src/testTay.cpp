@@ -17,7 +17,7 @@ void tayGraphicsTest();
 void tay()
 {
     int testMode;
-    cout << "Enter '1' for Battle test\nEnter '2' for Graphics test\n" << endl;
+    cout << "Enter '1' for Battle test\nEnter '2' for Graphics test " << endl;
     cin >> testMode;
     cin.clear();
     cin.ignore(1000, '\n');
@@ -115,9 +115,17 @@ void tayGraphicsTest()
 
     sf::Sprite sprite;
     sprite.setScale(sf::Vector2f(8.f, 8.f));
+    sprite.setPosition(sf::Vector2f(10.f, 50.f));
     const int SPRITESIZE = 64;
-    int i = 0;
+    
+    // used to switch between animation frames
     int frame = 0;
+
+    // The index of that determines which PoCemon sprite is being displayed.
+    int iPoce = 1;
+
+    
+
     while (window.isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -127,30 +135,49 @@ void tayGraphicsTest()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                if (iPoce <= 1) {
+                    iPoce = 151;
+                }
+                else {
+                    --iPoce;
+                }
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                if (iPoce >= 151) {
+                    iPoce = 1;
+                } else {
+                    ++iPoce;
+                }
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                if (frame == 0) {
+                    frame = 1;
+                } else {
+                    frame = 0;
+                }
+            }
+
+            
         }
 
         // clear the window with black color
         window.clear(sf::Color::Black);
         sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect((SPRITESIZE*i), (1 + SPRITESIZE * frame), SPRITESIZE * 4, SPRITESIZE));
-        sprite.setPosition(sf::Vector2f(10.f, 50.f));
+        sprite.setTextureRect(sf::IntRect((SPRITESIZE*iPoce), ((SPRITESIZE+1) * frame), SPRITESIZE, SPRITESIZE));
 
         // inside the main loop, between window.clear() and window.display()
         window.draw(sprite);
 
         // end the current frame
         window.display();
-        this_thread::sleep_for(chrono::milliseconds(500));
 
-        if (frame == 0) {
-            frame = 1;
-        }
-        else {
-            i += 4;
-            frame = 0;
-        }
-
-        if (i > 151) i = 1;
     }
 
 
