@@ -13,8 +13,7 @@ using namespace std;
 			Pocemon Kate(PkmnId::Abra, 1);
 			Pocemon Person(PkmnId::Abra, 1);
 			Kate.doDamage(&attack, &Kate, &Person);
-			
-            cin.get();
-			
-			}
 
+            cin.get();
+
+			}

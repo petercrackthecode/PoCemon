@@ -23,7 +23,7 @@ public:
     // Takes a Type enum and returns its name (as a string).
     static std::string getTypeName(Type type);
 
-    // Defines all base PoCemon data/stats. 
+    // Defines all base PoCemon data/stats.
     static PocemonData *defineAllPocemonData();
 
     // *******************************************************
