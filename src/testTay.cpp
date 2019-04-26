@@ -5,10 +5,29 @@
 #include "randomGenerator.h"
 #include "AbilityFactory.h"
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <chrono>
+#include <thread>
+
 using namespace std;
+
+void tayGraphicsTest();
 
 void tay()
 {
+    int testMode;
+    cout << "Enter '1' for Battle test\nEnter '2' for Graphics test\n" << endl;
+    cin >> testMode;
+    cin.clear();
+    cin.ignore(1000, '\n');
+
+    if (testMode != 1)
+    {
+        tayGraphicsTest();
+        return;
+    }
+
     //Pocemon testAttacker(PkmnId::Aerodactyl, 99);
     //Pocemon testDefender(PkmnId::Abra, 99);
 
@@ -77,4 +96,62 @@ void tay()
 
 
     cin.get();
+}
+
+
+
+
+void tayGraphicsTest()
+{
+    sf::RenderWindow window(sf::VideoMode(1800, 1000), "PoCemon");
+
+    sf::Texture texture;
+
+
+    if (!texture.loadFromFile("graphics/gen1-sprites.png"))
+    {
+        // error...
+    }
+
+    sf::Sprite sprite;
+    sprite.setScale(sf::Vector2f(8.f, 8.f));
+    const int SPRITESIZE = 64;
+    int i = 0;
+    int frame = 0;
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // clear the window with black color
+        window.clear(sf::Color::Black);
+        sprite.setTexture(texture);
+        sprite.setTextureRect(sf::IntRect((SPRITESIZE*i), (1 + SPRITESIZE * frame), SPRITESIZE * 4, SPRITESIZE));
+        sprite.setPosition(sf::Vector2f(10.f, 50.f));
+
+        // inside the main loop, between window.clear() and window.display()
+        window.draw(sprite);
+
+        // end the current frame
+        window.display();
+        this_thread::sleep_for(chrono::milliseconds(500));
+
+        if (frame == 0) {
+            frame = 1;
+        }
+        else {
+            i += 4;
+            frame = 0;
+        }
+
+        if (i > 151) i = 1;
+    }
+
+
 }
