@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "Player.h"
-
+#include <string>
 #include <SFML/Graphics.hpp>
 
 class Game  {
@@ -18,7 +18,7 @@ private:
     Player mPlayer;
     constexpr static double PlayerSpeed= 100.f;
 public:
-    Game() : mWindow(sf::VideoMode(2000, 1200), "PoCemon"), mPlayer() {
+    Game() : mWindow(sf::VideoMode(2000, 1200), "PoCemon"), mPlayer(std::string("Player 1")) {
         
     }
     
