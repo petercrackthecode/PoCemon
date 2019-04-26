@@ -1,13 +1,5 @@
-//
-//  Game.cpp
-//  PoCemon
-//
-//  Created by Dung Nguyen on 4/23/19.
-//  Copyright © 2019 Dung Nguyen. All rights reserved.
-//
-
-#include "Game.hpp"
-#include "Player.hpp"
+#include "Game.h"
+#include "Player.h"
 
 #include <SFML/Graphics.hpp>
 

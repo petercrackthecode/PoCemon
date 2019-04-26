@@ -1,18 +1,10 @@
-//
-//  Game.hpp
-//  PoCemon
-//
-//  Created by Dung Nguyen on 4/23/19.
-//  Copyright © 2019 Dung Nguyen. All rights reserved.
-//
-#include "Player.hpp"
+#ifndef GAME_H
+#define GAME_H
+
+#include "Player.h"
 
 #include <SFML/Graphics.hpp>
 
-#ifndef Game_hpp
-#define Game_hpp
-
-#include <stdio.h>
 class Game  {
 private:
     // private member funcs
@@ -34,4 +26,4 @@ public:
     void draw();
 };
 
-#endif /* Game_hpp */
+#endif /* GAME_H */

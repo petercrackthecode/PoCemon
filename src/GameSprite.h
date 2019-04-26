@@ -1,17 +1,7 @@
-//
-//  GameSprite.hpp
-//  PoCemon
-//
-//  Created by Dung Nguyen on 4/24/19.
-//  Copyright © 2019 Dung Nguyen. All rights reserved.
-//
-
-#ifndef GameSprite_hpp
-#define GameSprite_hpp
+#ifndef GAMESPRITE_H
+#define GAMESPRITE_H
 
 #include <SFML/Graphics.hpp>
-
-#include <stdio.h>
 #include <string>
 
 class GameSprite    {
@@ -25,4 +15,4 @@ public:
     }
 };
 
-#endif /* GameSprite_hpp */
+#endif /* GAMESPRITE_H */
