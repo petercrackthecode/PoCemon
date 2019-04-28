@@ -170,7 +170,7 @@ void tayGraphicsTest()
         // clear the window with black color
         window.clear(sf::Color::Black);
         sprite.setTexture(texture);
-        sprite.setTextureRect(sf::IntRect((SPRITESIZE*iPoce), ((SPRITESIZE+1) * frame), SPRITESIZE, SPRITESIZE));
+        sprite.setTextureRect(sf::IntRect((SPRITESIZE*iPoce), ((SPRITESIZE) * frame), SPRITESIZE, SPRITESIZE));
 
         // inside the main loop, between window.clear() and window.display()
         window.draw(sprite);
