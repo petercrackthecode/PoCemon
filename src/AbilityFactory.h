@@ -2,6 +2,7 @@
 #define ABILITYFACTORY_H
 
 #include <map>
+#include <vector>
 #include "Ability.h"
 #include "AttackAbility.h"
 #include "Enums.h"
@@ -14,7 +15,7 @@ public:
 
 private:
     static std::map<AbilityId, Ability*> allAbilities;
-
+    static std::map<PkmnId, std::vector<AbilityId>> learnSets;
 
 };
 
