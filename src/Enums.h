@@ -45,6 +45,7 @@ enum class StatusEffect
     Paralyze,
     Poison,
     PoisonBadly,
+    Rest,
     Sleep,
     BurnFreezeParalyze,
     Hp,
