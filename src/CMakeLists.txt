@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 
-add_executable (PoCemon "main.cpp" "PoCemon.cpp" "PoCemon.h" "PoCemonData.cpp" "PoCemonData.h" "Enums.h" "testTay.cpp" "testAman.cpp" "testPeter.cpp" "testKate.cpp" "Ability.cpp" "Ability.h" "AttackAbility.cpp" "AttackAbility.h" "randomGenerator.cpp" "randomGenerator.h" "Player.h" "Player.cpp" "AbilityFactory.h" "AbilityFactory.cpp" "Game.h" "Game.cpp" "GameSprite.h" "GameSprite.cpp")
+add_executable (PoCemon "main.cpp" "PoCemon.cpp" "PoCemon.h" "PoCemonData.cpp" "PoCemonData.h" "Enums.h" "testTay.cpp" "testAman.cpp" "testPeter.cpp" "testKate.cpp" "Ability.cpp" "Ability.h" "AttackAbility.cpp" "AttackAbility.h" "randomGenerator.cpp" "randomGenerator.h" "Player.h" "Player.cpp" "AbilityFactory.h" "AbilityFactory.cpp" "Game.h" "Game.cpp" "GameSprite.h" "GameSprite.cpp" "Structs.h" "Battle.h" "Battle.cpp" "sfTeamListItem.h" "sfTeamListItem.cpp")
 target_link_libraries(PoCemon sfml-graphics)
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
