@@ -1,7 +1,9 @@
 #ifndef POCEMON_H
 #define POCEMON_H
 
+#include <map>
 #include <string>
+#include <vector>
 #include "Enums.h"
 #include "PoCemonData.h"
 #include "AttackAbility.h"
@@ -24,6 +26,7 @@ public:
     std::string getName() const { return name; };
     Type getType1() const { return type1; };
     Type getType2() const { return type2; };
+    bool hasType(const Type &t) const;
 
     int getCurHp() const { return curHp; };
     int getCurAtk() const { return applyStatStage(atk, statStages.atk); };
@@ -43,7 +46,15 @@ public:
     int getEvasionStage() const { return statStages.evasion; };
     int getCriticalHitRatioStage() const { return statStages.criticalHitRatio; };
 
+    bool canGetStatus(const StatusEffect &effect) const;
+
     bool modifyStatStage(Stat statToModify, const int &numOfStages);
+
+    void assignAbilitySet(const std::vector<Ability*> &set);
+    void assignRandomAbilitySet();
+
+    bool checkAbility(const int &i) const;
+    Ability* getAbility(const int &i) const;
 
     template <class BasicAttributeReturn>
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
@@ -115,6 +126,11 @@ public:
     int evSpAtk;
     int evSpDef;
 
+    std::vector<Ability*> abilitySet;
+
+    std::pair<StatusEffect, int> exclusiveStatusEffect { StatusEffect::None, 0 };
+    std::map<StatusEffect, int> activeStatusEffects;
+
     struct StatStages {
         int atk;
         int def;
@@ -127,7 +143,7 @@ public:
     };
 
     StatStages statStages;
-
+    
 };
 
 

@@ -8,7 +8,10 @@
 #include "AttackAbility.h"
 #include "Enums.h"
 #include "randomGenerator.h"
+#include "AbilityFactory.h"
+
 using namespace std; 
+
 Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
 {
     int tempId = static_cast<int>(selectedId);
@@ -51,6 +54,8 @@ Pocemon::Pocemon(const PkmnId &selectedId, const int &lvl)
     spDef = calculateStat(level, baseSpDef, ivSpDef, evSpDef);
 
     resetCurStats();
+
+    
 }
 
 
@@ -204,6 +209,73 @@ void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 	//battlestatser.open("battlestatUser.txt");
 	//battlestat << pocemon2->id << " caused damage to " << defendingPocemon->id << "." << endl;
 
+}
+
+
+bool Pocemon::hasType(const Type &t) const
+{
+    if (t == this->getType1() || t == this->getType2())
+        return true;
+    else
+        return false;
+}
+
+bool Pocemon::canGetStatus(const StatusEffect &effect) const
+{
+    
+
+    if (effect == StatusEffect::Burn)
+    {
+        if (this->hasType(Type::Fire) || exclusiveStatusEffect.first != StatusEffect::None)
+        return false;
+    }
+
+    if (effect == StatusEffect::Freeze)
+    {
+        if (this->hasType(Type::Ice) || exclusiveStatusEffect.first != StatusEffect::None)
+        return false;
+    }
+
+    if (effect == StatusEffect::Poison || effect == StatusEffect::PoisonBadly)
+    {
+        if (this->hasType(Type::Poison) || exclusiveStatusEffect.first != StatusEffect::None)
+            return false;
+    }
+
+    //if (effect == StatusEffect::Sleep && ())
+    return true;
+}
+
+
+void Pocemon::assignAbilitySet(const std::vector<Ability*> &set)
+{
+    if (set.size() > 4 || set.size() == 0)
+        throw "Invalid set assigned to Pocemon"; // TODO: Class exception.
+
+    abilitySet = set;
+}
+
+void Pocemon::assignRandomAbilitySet()
+{
+    abilitySet = AbilityFactory::getRandomAbilitySet(*this);
+}
+
+
+bool Pocemon::checkAbility(const int &i) const
+{
+    if (i < 0 || i >= abilitySet.size())
+        return false;
+    else
+        return true;
+}
+
+
+Ability* Pocemon::getAbility(const int &i) const
+{
+    if (i < 0 || i >= abilitySet.size())
+        throw "Ability out of range for this PoCemon"; // TODO: Class exception.
+
+    return abilitySet[i];
 }
 
 
