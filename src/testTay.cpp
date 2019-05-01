@@ -394,7 +394,7 @@ void tayGraphicsAndBattleTest()
                     }
                 }
 
-                else if (event.key.code == sf::Keyboard::Numpad0) {
+                else if (event.key.code == sf::Keyboard::Numpad0 || event.key.code == sf::Keyboard::Backspace) {
                     if (iFrameP2 == 0) {
                         iFrameP2 = 1;
                     } else {
@@ -419,7 +419,7 @@ void tayGraphicsAndBattleTest()
                     }
                 }
 
-                else if (event.key.code == sf::Keyboard::Subtract) {
+                else if (event.key.code == sf::Keyboard::Subtract || event.key.code == sf::Keyboard::RBracket) {
                     if (iPoceP2 <= 1) {
                         iPoceP2 = 151;
                     } else {
@@ -427,7 +427,7 @@ void tayGraphicsAndBattleTest()
                     }
                 }
 
-                else if (event.key.code == sf::Keyboard::Add)
+                else if (event.key.code == sf::Keyboard::Add || event.key.code == sf::Keyboard::Backslash)
                 {
                     if (iPoceP2 >= 151) {
                         iPoceP2 = 1;
@@ -475,42 +475,42 @@ void tayGraphicsAndBattleTest()
 
 
 
-                else if (event.key.code == sf::Keyboard::Numpad1) {
+                else if (event.key.code == sf::Keyboard::Numpad1 || event.key.code == sf::Keyboard::Num7) {
                     p2.setActivePocemon(0);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
                     p2PoceNameText.setPosition(sf::Vector2f(screenW - 6.f*fScale - p2PoceNameText.getLocalBounds().width, 6.f*fScale));
                 }
 
-                else if (event.key.code == sf::Keyboard::Numpad2) {
+                else if (event.key.code == sf::Keyboard::Numpad2 || event.key.code == sf::Keyboard::Num8) {
                     p2.setActivePocemon(1);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
                     p2PoceNameText.setPosition(sf::Vector2f(screenW - 6.f*fScale - p2PoceNameText.getLocalBounds().width, 6.f*fScale));
                 }
 
-                else if (event.key.code == sf::Keyboard::Numpad3) {
+                else if (event.key.code == sf::Keyboard::Numpad3 || event.key.code == sf::Keyboard::Num9) {
                     p2.setActivePocemon(2);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
                     p2PoceNameText.setPosition(sf::Vector2f(screenW - 6.f*fScale - p2PoceNameText.getLocalBounds().width, 6.f*fScale));
                 }
 
-                else if (event.key.code == sf::Keyboard::Numpad4) {
+                else if (event.key.code == sf::Keyboard::Numpad4 || event.key.code == sf::Keyboard::Num0) {
                     p2.setActivePocemon(3);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
                     p2PoceNameText.setPosition(sf::Vector2f(screenW - 6.f*fScale - p2PoceNameText.getLocalBounds().width, 6.f*fScale));
                 }
 
-                else if (event.key.code == sf::Keyboard::Numpad5) {
+                else if (event.key.code == sf::Keyboard::Numpad5 || event.key.code == sf::Keyboard::Dash) {
                     p2.setActivePocemon(4);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
                     p2PoceNameText.setPosition(sf::Vector2f(screenW - 6.f*fScale - p2PoceNameText.getLocalBounds().width, 6.f*fScale));
                 }
                 
-                else if (event.key.code == sf::Keyboard::Numpad6) {
+                else if (event.key.code == sf::Keyboard::Numpad6 || event.key.code == sf::Keyboard::Equal) {
                     p2.setActivePocemon(5);
                     iPoceP2 = static_cast<int>(p2.getActivePocemon()->getId());
                     p2PoceNameText.setString(p2.getActivePocemon()->getName());
