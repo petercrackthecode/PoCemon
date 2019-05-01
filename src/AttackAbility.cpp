@@ -22,18 +22,7 @@ AttackAbility::AttackAbility(const AbilityId &tempId,
                     : Ability{ tempId, tempName, tempDescription, tempType,
                                tempAbilityCategory, tempPower, tempAccuracy,
                                tempMaxPP, tempStatusEffectChance, tempStatusEffectType }
-{
-    std::cout << this->description << std::endl;
-    //id = tempId;
-    //name = tempName;
-    //description = tempDescription;
-    //devDescription = ""; // tempDevDescription;
-    //type = tempType;
-    //abilityCategory = tempAbilityCategory;
-    //power = tempPower;
-    //accuracy = tempAccuracy;
-    //maxPP = tempMaxPP;
-}
+{}
 
 // Calculates the Hit Threshold (likelyhood of hitting with an attack) based on
 // the Attack's accuracy and the accuracy/evasion stat stages of the attacker/defender.
