@@ -27,7 +27,8 @@ struct BattleEvent
     Pocemon *source;
     Pocemon *target;
     Ability *abilitySource;
-    Player *PlayerSource;
+    Player *playerSource;
+    StatusEffect effectSource;
     bool isSucess;
     int amount;
     

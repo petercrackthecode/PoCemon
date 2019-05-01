@@ -9,17 +9,18 @@ class Battle
 {
 public:
     Battle(Player &p1temp, Player &p2temp);
+    Battle(const std::string &p1Name, const std::string &p2Name);
 
     bool next();
-    void addEvent(BattleEvent evt) { battleEvents.push(evt); }
-    BattleEvent popNextEvent() { return battleEvents.pop(); }
+    static void addEvent(BattleEvent evt);
+    BattleEvent extractNextEvent();
 
 private:
-    Player p1;
-    Player p2;
-    Player *attackingPlayer;
-    Player *defendingPlayer;
-    std::queue<BattleEvent> battleEvents;
+    Player &p1;
+    Player &p2;
+    Player *attackingPlayer = nullptr;
+    Player *defendingPlayer = nullptr;
+    static std::queue<BattleEvent> battleEvents;
 
     // Probably getting rid of this:
     //enum class State
