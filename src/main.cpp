@@ -1,9 +1,11 @@
-#include "PoCemon.h"
-#include "Enums.h"
-#include "PoCemonData.h"
 #include <iostream>
 #include <iomanip>
 #include <ctime>
+#include "PoCemon.h"
+#include "Enums.h"
+#include "PoCemonData.h"
+#include "AbilityFactory.h"
+#include "Structs.h"
 
 using namespace std;
 
@@ -39,6 +41,9 @@ int main()
 {
     // Seed for random number generation (this should only be done once throughout the entire program).
     srand(time(NULL));
+
+    // Initialize the AbilityFactory
+    AbilityFactory::init();
 
     int whoAreYou;
     cout << "Who are you?" << endl;
