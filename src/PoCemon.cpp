@@ -154,7 +154,7 @@ bool Pocemon::modifyStatStage(Stat statToModify, const int &numOfStages)
 }
 
 
-void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
+int Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
 {
     int tempAtk;
     int tempDef;
@@ -198,7 +198,7 @@ void Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
     int newHp = defendingPocemon.curHp - damage;
     defendingPocemon.curHp = newHp;
 
-    return;
+    return damage;
 	
 
 	//ofstream battlestat;
