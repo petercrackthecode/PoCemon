@@ -1,10 +1,16 @@
+#include <algorithm>
 #include <map>
 #include "AbilityFactory.h"
 #include "Ability.h"
 #include "AttackAbility.h"
 #include "Enums.h"
+#include "PoCemon.h"
+#include "randomGenerator.h"
+#include <iostream>
 
-std::map<AbilityId, Ability*> AbilityFactory::allAbilities;
+using namespace std;
+
+map<AbilityId, Ability*> AbilityFactory::allAbilities;
 
 void AbilityFactory::init()
 {
@@ -34,6 +40,158 @@ void AbilityFactory::init()
     allAbilities.emplace(AbilityId::WaterGun, new AttackAbility(AbilityId::WaterGun, "Water Gun", "", Type::Water, AbilityCategory::Special, 40, 255, 25, 0, StatusEffect::None));
     allAbilities.emplace(AbilityId::WingAttack, new AttackAbility(AbilityId::WingAttack, "Wing Attack", "", Type::Flying, AbilityCategory::Physical, 60, 255, 35, 0, StatusEffect::None));
 
+
+
+    // Undefined Abilities:
+    allAbilities.emplace(AbilityId::Agility, new AttackAbility(AbilityId::Agility, "UNDEFINED AbilityId::Agility", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Amnesia, new AttackAbility(AbilityId::Amnesia, "UNDEFINED AbilityId::Amnesia", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Barrier, new AttackAbility(AbilityId::Barrier, "UNDEFINED AbilityId::Barrier", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::ConfuseRay, new AttackAbility(AbilityId::ConfuseRay, "UNDEFINED AbilityId::ConfuseRay", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Conversion, new AttackAbility(AbilityId::Conversion, "UNDEFINED AbilityId::Conversion", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DefenseCurl, new AttackAbility(AbilityId::DefenseCurl, "UNDEFINED AbilityId::DefenseCurl", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Disable, new AttackAbility(AbilityId::Disable, "UNDEFINED AbilityId::Disable", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DoubleTeam, new AttackAbility(AbilityId::DoubleTeam, "UNDEFINED AbilityId::DoubleTeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Flash, new AttackAbility(AbilityId::Flash, "UNDEFINED AbilityId::Flash", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FocusEnergy, new AttackAbility(AbilityId::FocusEnergy, "UNDEFINED AbilityId::FocusEnergy", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Glare, new AttackAbility(AbilityId::Glare, "UNDEFINED AbilityId::Glare", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Growl, new AttackAbility(AbilityId::Growl, "UNDEFINED AbilityId::Growl", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Growth, new AttackAbility(AbilityId::Growth, "UNDEFINED AbilityId::Growth", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Harden, new AttackAbility(AbilityId::Harden, "UNDEFINED AbilityId::Harden", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Haze, new AttackAbility(AbilityId::Haze, "UNDEFINED AbilityId::Haze", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Hypnosis, new AttackAbility(AbilityId::Hypnosis, "UNDEFINED AbilityId::Hypnosis", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Kinesis, new AttackAbility(AbilityId::Kinesis, "UNDEFINED AbilityId::Kinesis", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::LeechSeed, new AttackAbility(AbilityId::LeechSeed, "UNDEFINED AbilityId::LeechSeed", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Leer, new AttackAbility(AbilityId::Leer, "UNDEFINED AbilityId::Leer", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::LightScreen, new AttackAbility(AbilityId::LightScreen, "UNDEFINED AbilityId::LightScreen", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::LovelyKiss, new AttackAbility(AbilityId::LovelyKiss, "UNDEFINED AbilityId::LovelyKiss", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Meditate, new AttackAbility(AbilityId::Meditate, "UNDEFINED AbilityId::Meditate", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Metronome, new AttackAbility(AbilityId::Metronome, "UNDEFINED AbilityId::Metronome", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Mimic, new AttackAbility(AbilityId::Mimic, "UNDEFINED AbilityId::Mimic", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Minimize, new AttackAbility(AbilityId::Minimize, "UNDEFINED AbilityId::Minimize", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::MirrorMove, new AttackAbility(AbilityId::MirrorMove, "UNDEFINED AbilityId::MirrorMove", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Mist, new AttackAbility(AbilityId::Mist, "UNDEFINED AbilityId::Mist", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::PoisonGas, new AttackAbility(AbilityId::PoisonGas, "UNDEFINED AbilityId::PoisonGas", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::PoisonPowder, new AttackAbility(AbilityId::PoisonPowder, "UNDEFINED AbilityId::PoisonPowder", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Recover, new AttackAbility(AbilityId::Recover, "UNDEFINED AbilityId::Recover", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Reflect, new AttackAbility(AbilityId::Reflect, "UNDEFINED AbilityId::Reflect", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Rest, new AttackAbility(AbilityId::Rest, "UNDEFINED AbilityId::Rest", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Roar, new AttackAbility(AbilityId::Roar, "UNDEFINED AbilityId::Roar", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SandAttack, new AttackAbility(AbilityId::SandAttack, "UNDEFINED AbilityId::SandAttack", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Screech, new AttackAbility(AbilityId::Screech, "UNDEFINED AbilityId::Screech", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Sharpen, new AttackAbility(AbilityId::Sharpen, "UNDEFINED AbilityId::Sharpen", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Sing, new AttackAbility(AbilityId::Sing, "UNDEFINED AbilityId::Sing", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SleepPowder, new AttackAbility(AbilityId::SleepPowder, "UNDEFINED AbilityId::SleepPowder", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Smokescreen, new AttackAbility(AbilityId::Smokescreen, "UNDEFINED AbilityId::Smokescreen", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SoftBoiled, new AttackAbility(AbilityId::SoftBoiled, "UNDEFINED AbilityId::SoftBoiled", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Splash, new AttackAbility(AbilityId::Splash, "UNDEFINED AbilityId::Splash", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Spore, new AttackAbility(AbilityId::Spore, "UNDEFINED AbilityId::Spore", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::StringShot, new AttackAbility(AbilityId::StringShot, "UNDEFINED AbilityId::StringShot", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::StunSpore, new AttackAbility(AbilityId::StunSpore, "UNDEFINED AbilityId::StunSpore", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Substitute, new AttackAbility(AbilityId::Substitute, "UNDEFINED AbilityId::Substitute", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Supersonic, new AttackAbility(AbilityId::Supersonic, "UNDEFINED AbilityId::Supersonic", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SwordsDance, new AttackAbility(AbilityId::SwordsDance, "UNDEFINED AbilityId::SwordsDance", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::TailWhip, new AttackAbility(AbilityId::TailWhip, "UNDEFINED AbilityId::TailWhip", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Teleport, new AttackAbility(AbilityId::Teleport, "UNDEFINED AbilityId::Teleport", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::ThunderWave, new AttackAbility(AbilityId::ThunderWave, "UNDEFINED AbilityId::ThunderWave", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Toxic, new AttackAbility(AbilityId::Toxic, "UNDEFINED AbilityId::Toxic", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Transform, new AttackAbility(AbilityId::Transform, "UNDEFINED AbilityId::Transform", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Whirlwind, new AttackAbility(AbilityId::Whirlwind, "UNDEFINED AbilityId::Whirlwind", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Withdraw, new AttackAbility(AbilityId::Withdraw, "UNDEFINED AbilityId::Withdraw", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Withdraw, new AttackAbility(AbilityId::Withdraw, "UNDEFINED AbilityId::Withdraw", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Absorb, new AttackAbility(AbilityId::Absorb, "UNDEFINED AbilityId::Absorb", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Acid, new AttackAbility(AbilityId::Acid, "UNDEFINED AbilityId::Acid", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::AcidArmor, new AttackAbility(AbilityId::AcidArmor, "UNDEFINED AbilityId::AcidArmor", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::AuroraBeam, new AttackAbility(AbilityId::AuroraBeam, "UNDEFINED AbilityId::AuroraBeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Barrage, new AttackAbility(AbilityId::Barrage, "UNDEFINED AbilityId::Barrage", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Bide, new AttackAbility(AbilityId::Bide, "UNDEFINED AbilityId::Bide", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Bind, new AttackAbility(AbilityId::Bind, "UNDEFINED AbilityId::Bind", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Bite, new AttackAbility(AbilityId::Bite, "UNDEFINED AbilityId::Bite", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Blizzard, new AttackAbility(AbilityId::Blizzard, "UNDEFINED AbilityId::Blizzard", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::BodySlam, new AttackAbility(AbilityId::BodySlam, "UNDEFINED AbilityId::BodySlam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::BoneClub, new AttackAbility(AbilityId::BoneClub, "UNDEFINED AbilityId::BoneClub", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Bonemerang, new AttackAbility(AbilityId::Bonemerang, "UNDEFINED AbilityId::Bonemerang", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Bubble, new AttackAbility(AbilityId::Bubble, "UNDEFINED AbilityId::Bubble", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::BubbleBeam, new AttackAbility(AbilityId::BubbleBeam, "UNDEFINED AbilityId::BubbleBeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Clamp, new AttackAbility(AbilityId::Clamp, "UNDEFINED AbilityId::Clamp", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::CometPunch, new AttackAbility(AbilityId::CometPunch, "UNDEFINED AbilityId::CometPunch", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Confusion, new AttackAbility(AbilityId::Confusion, "UNDEFINED AbilityId::Confusion", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Constrict, new AttackAbility(AbilityId::Constrict, "UNDEFINED AbilityId::Constrict", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Counter, new AttackAbility(AbilityId::Counter, "UNDEFINED AbilityId::Counter", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Crabhammer, new AttackAbility(AbilityId::Crabhammer, "UNDEFINED AbilityId::Crabhammer", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Dig, new AttackAbility(AbilityId::Dig, "UNDEFINED AbilityId::Dig", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DizzyPunch, new AttackAbility(AbilityId::DizzyPunch, "UNDEFINED AbilityId::DizzyPunch", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DoubleKick, new AttackAbility(AbilityId::DoubleKick, "UNDEFINED AbilityId::DoubleKick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DoubleSlap, new AttackAbility(AbilityId::DoubleSlap, "UNDEFINED AbilityId::DoubleSlap", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DoubleEdge, new AttackAbility(AbilityId::DoubleEdge, "UNDEFINED AbilityId::DoubleEdge", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DragonRage, new AttackAbility(AbilityId::DragonRage, "UNDEFINED AbilityId::DragonRage", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::DreamEater, new AttackAbility(AbilityId::DreamEater, "UNDEFINED AbilityId::DreamEater", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Earthquake, new AttackAbility(AbilityId::Earthquake, "UNDEFINED AbilityId::Earthquake", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Ember, new AttackAbility(AbilityId::Ember, "UNDEFINED AbilityId::Ember", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Explosion, new AttackAbility(AbilityId::Explosion, "UNDEFINED AbilityId::Explosion", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FireBlast, new AttackAbility(AbilityId::FireBlast, "UNDEFINED AbilityId::FireBlast", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FirePunch, new AttackAbility(AbilityId::FirePunch, "UNDEFINED AbilityId::FirePunch", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FireSpin, new AttackAbility(AbilityId::FireSpin, "UNDEFINED AbilityId::FireSpin", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Fissure, new AttackAbility(AbilityId::Fissure, "UNDEFINED AbilityId::Fissure", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Flamethrower, new AttackAbility(AbilityId::Flamethrower, "UNDEFINED AbilityId::Flamethrower", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Fly, new AttackAbility(AbilityId::Fly, "UNDEFINED AbilityId::Fly", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FuryAttack, new AttackAbility(AbilityId::FuryAttack, "UNDEFINED AbilityId::FuryAttack", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::FurySwipes, new AttackAbility(AbilityId::FurySwipes, "UNDEFINED AbilityId::FurySwipes", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Guillotine, new AttackAbility(AbilityId::Guillotine, "UNDEFINED AbilityId::Guillotine", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Gust, new AttackAbility(AbilityId::Gust, "UNDEFINED AbilityId::Gust", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Headbutt, new AttackAbility(AbilityId::Headbutt, "UNDEFINED AbilityId::Headbutt", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::HighJumpKick, new AttackAbility(AbilityId::HighJumpKick, "UNDEFINED AbilityId::HighJumpKick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::HornDrill, new AttackAbility(AbilityId::HornDrill, "UNDEFINED AbilityId::HornDrill", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::HyperBeam, new AttackAbility(AbilityId::HyperBeam, "UNDEFINED AbilityId::HyperBeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::HyperFang, new AttackAbility(AbilityId::HyperFang, "UNDEFINED AbilityId::HyperFang", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::IceBeam, new AttackAbility(AbilityId::IceBeam, "UNDEFINED AbilityId::IceBeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::IcePunch, new AttackAbility(AbilityId::IcePunch, "UNDEFINED AbilityId::IcePunch", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::JumpKick, new AttackAbility(AbilityId::JumpKick, "UNDEFINED AbilityId::JumpKick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::KarateChop, new AttackAbility(AbilityId::KarateChop, "UNDEFINED AbilityId::KarateChop", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::LeechLife, new AttackAbility(AbilityId::LeechLife, "UNDEFINED AbilityId::LeechLife", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Lick, new AttackAbility(AbilityId::Lick, "UNDEFINED AbilityId::Lick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::LowKick, new AttackAbility(AbilityId::LowKick, "UNDEFINED AbilityId::LowKick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::MegaDrain, new AttackAbility(AbilityId::MegaDrain, "UNDEFINED AbilityId::MegaDrain", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::NightShade, new AttackAbility(AbilityId::NightShade, "UNDEFINED AbilityId::NightShade", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::PetalDance, new AttackAbility(AbilityId::PetalDance, "UNDEFINED AbilityId::PetalDance", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::PinMissile, new AttackAbility(AbilityId::PinMissile, "UNDEFINED AbilityId::PinMissile", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::PoisonSting, new AttackAbility(AbilityId::PoisonSting, "UNDEFINED AbilityId::PoisonSting", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Psybeam, new AttackAbility(AbilityId::Psybeam, "UNDEFINED AbilityId::Psybeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Psychic, new AttackAbility(AbilityId::Psychic, "UNDEFINED AbilityId::Psychic", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Psywave, new AttackAbility(AbilityId::Psywave, "UNDEFINED AbilityId::Psywave", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::QuickAttack, new AttackAbility(AbilityId::QuickAttack, "UNDEFINED AbilityId::QuickAttack", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Rage, new AttackAbility(AbilityId::Rage, "UNDEFINED AbilityId::Rage", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::RazorLeaf, new AttackAbility(AbilityId::RazorLeaf, "UNDEFINED AbilityId::RazorLeaf", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::RazorWind, new AttackAbility(AbilityId::RazorWind, "UNDEFINED AbilityId::RazorWind", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::RockSlide, new AttackAbility(AbilityId::RockSlide, "UNDEFINED AbilityId::RockSlide", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::RollingKick, new AttackAbility(AbilityId::RollingKick, "UNDEFINED AbilityId::RollingKick", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SeismicToss, new AttackAbility(AbilityId::SeismicToss, "UNDEFINED AbilityId::SeismicToss", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SelfDestruct, new AttackAbility(AbilityId::SelfDestruct, "UNDEFINED AbilityId::SelfDestruct", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SkullBash, new AttackAbility(AbilityId::SkullBash, "UNDEFINED AbilityId::SkullBash", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SkyAttack, new AttackAbility(AbilityId::SkyAttack, "UNDEFINED AbilityId::SkyAttack", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Slash, new AttackAbility(AbilityId::Slash, "UNDEFINED AbilityId::Slash", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Sludge, new AttackAbility(AbilityId::Sludge, "UNDEFINED AbilityId::Sludge", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Smog, new AttackAbility(AbilityId::Smog, "UNDEFINED AbilityId::Smog", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SolarBeam, new AttackAbility(AbilityId::SolarBeam, "UNDEFINED AbilityId::SolarBeam", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SonicBoom, new AttackAbility(AbilityId::SonicBoom, "UNDEFINED AbilityId::SonicBoom", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SpikeCannon, new AttackAbility(AbilityId::SpikeCannon, "UNDEFINED AbilityId::SpikeCannon", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Stomp, new AttackAbility(AbilityId::Stomp, "UNDEFINED AbilityId::Stomp", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Struggle, new AttackAbility(AbilityId::Struggle, "UNDEFINED AbilityId::Struggle", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Submission, new AttackAbility(AbilityId::Submission, "UNDEFINED AbilityId::Submission", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::SuperFang, new AttackAbility(AbilityId::SuperFang, "UNDEFINED AbilityId::SuperFang", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Swift, new AttackAbility(AbilityId::Swift, "UNDEFINED AbilityId::Swift", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::TakeDown, new AttackAbility(AbilityId::TakeDown, "UNDEFINED AbilityId::TakeDown", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Thrash, new AttackAbility(AbilityId::Thrash, "UNDEFINED AbilityId::Thrash", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Thunder, new AttackAbility(AbilityId::Thunder, "UNDEFINED AbilityId::Thunder", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::ThunderPunch, new AttackAbility(AbilityId::ThunderPunch, "UNDEFINED AbilityId::ThunderPunch", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::ThunderShock, new AttackAbility(AbilityId::ThunderShock, "UNDEFINED AbilityId::ThunderShock", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Thunderbolt, new AttackAbility(AbilityId::Thunderbolt, "UNDEFINED AbilityId::Thunderbolt", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::TriAttack, new AttackAbility(AbilityId::TriAttack, "UNDEFINED AbilityId::TriAttack", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Twineedle, new AttackAbility(AbilityId::Twineedle, "UNDEFINED AbilityId::Twineedle", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Waterfall, new AttackAbility(AbilityId::Waterfall, "UNDEFINED AbilityId::Waterfall", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+    allAbilities.emplace(AbilityId::Wrap, new AttackAbility(AbilityId::Wrap, "UNDEFINED AbilityId::Wrap", "", Type::Normal, AbilityCategory::Physical, 40, 242, 35, 0, StatusEffect::None));
+
+
+
     return;
 }
 
@@ -45,8 +203,90 @@ Ability* AbilityFactory::getAbility(const AbilityId &abilityId)
     return allAbilities[abilityId];
 }
 
+Ability* AbilityFactory::getRandomAbility(const PkmnId &id)
+{
+    if (abilityPools.count(id) != 1)
+        throw "Pocemon doesn't exist."; // TODO: Exception class.
 
-std::map<PkmnId, std::vector<AbilityId>> AbilityFactory::learnSets{
+    const vector<AbilityId> &abilityPool = abilityPools[id];
+    int maxIndex = abilityPool.size() - 1;
+    int randIndex = randomGenerator(0, maxIndex);
+    AbilityId randAbilityId = abilityPool.at(randIndex);
+    return getAbility(randAbilityId);
+}
+
+
+vector<Ability*> AbilityFactory::getRandomAbilitySet(const Pocemon &pocemon)
+{
+    if (abilityPools.count(pocemon.getId()) != 1)
+        throw "Pocemon doesn't exist."; // TODO: Exception class.
+
+    // The Ability Set that will be returned.
+        vector<Ability*> randAbilitySet;
+
+    vector<AbilityId> abilityPool = abilityPools[pocemon.getId()];
+    int maxIndex;
+    int randIndex;
+    AbilityId randAbilityId;
+
+    // Assign at least one damaging ability that matches the PoCemon's type (a STAB ability).
+    vector<AbilityId> stabAbilityPool;
+
+    copy_if(abilityPool.begin(),
+            abilityPool.end(),
+            back_inserter(stabAbilityPool),
+            [&pocemon](AbilityId id) {
+        Type abilityType = getAbilityType(id);
+        AbilityCategory abilityCategory = getAbilityCategory(id);
+        return (abilityCategory != AbilityCategory::Status &&
+            (abilityType == pocemon.getType1() || abilityType == pocemon.getType2()));
+    });
+
+    if (stabAbilityPool.size() > 0)
+    {
+        // Get the random STAB ability, then remove it from the main pool to prevent assigning duplicate abilities.
+        maxIndex = stabAbilityPool.size() - 1;
+        randIndex = randomGenerator(0, maxIndex);
+        randAbilityId = stabAbilityPool.at(randIndex);
+
+        // Find the chosen ability in the main pool, and remove it (to prevent duplicates).
+        auto abilityLocation = find(abilityPool.begin(), abilityPool.end(), randAbilityId);
+
+        if (abilityLocation != abilityPool.end()) {
+            abilityPool.erase(abilityLocation);
+        } else {
+            throw "Unable to find STAB ability in main ability pool"; // TODO: Exception class
+        }
+
+        // Add the ability to the Ability Set
+        randAbilitySet.push_back(getAbility(randAbilityId));
+    }
+
+    // Assign the remaining abilities at random.
+    while (randAbilitySet.size() < 4 && abilityPool.size() > 0)
+    {
+        maxIndex = abilityPool.size() - 1;
+        randIndex = randomGenerator(0, maxIndex);
+
+        // Get a random ability, then remove it from the pool to prevent assigning duplicate abilities.
+        randAbilityId = abilityPool.at(randIndex);
+        abilityPool.erase(abilityPool.begin() + randIndex);
+
+        // Add the ability to the Ability Set
+        randAbilitySet.push_back(getAbility(randAbilityId));
+    }
+
+    return randAbilitySet;
+}
+
+
+
+
+
+
+
+
+map<PkmnId, std::vector<AbilityId>> AbilityFactory::abilityPools{
     { PkmnId::Bulbasaur, { AbilityId::Growl, AbilityId::Tackle, AbilityId::LeechSeed, AbilityId::VineWhip, AbilityId::PoisonPowder, AbilityId::RazorLeaf, AbilityId::Growth, AbilityId::SleepPowder, AbilityId::SolarBeam, AbilityId::Cut, AbilityId::SwordsDance, AbilityId::Toxic, AbilityId::BodySlam, AbilityId::TakeDown, AbilityId::DoubleEdge, AbilityId::Rage, AbilityId::MegaDrain, AbilityId::Mimic, AbilityId::DoubleTeam, AbilityId::Reflect, AbilityId::Bide, AbilityId::Rest, AbilityId::Substitute } },
     { PkmnId::Ivysaur, { AbilityId::Growl, AbilityId::LeechSeed, AbilityId::Tackle, AbilityId::VineWhip, AbilityId::PoisonPowder, AbilityId::RazorLeaf, AbilityId::Growth, AbilityId::SleepPowder, AbilityId::SolarBeam, AbilityId::Cut, AbilityId::SwordsDance, AbilityId::Toxic, AbilityId::BodySlam, AbilityId::TakeDown, AbilityId::DoubleEdge, AbilityId::Rage, AbilityId::MegaDrain, AbilityId::Mimic, AbilityId::DoubleTeam, AbilityId::Reflect, AbilityId::Bide, AbilityId::Rest, AbilityId::Substitute} },
     { PkmnId::Venusaur, { AbilityId::Growl, AbilityId::LeechSeed, AbilityId::Tackle, AbilityId::VineWhip, AbilityId::PoisonPowder, AbilityId::RazorLeaf, AbilityId::Growth, AbilityId::SleepPowder, AbilityId::SolarBeam, AbilityId::Cut, AbilityId::SwordsDance, AbilityId::Toxic, AbilityId::BodySlam, AbilityId::TakeDown, AbilityId::DoubleEdge, AbilityId::HyperBeam, AbilityId::Rage, AbilityId::MegaDrain, AbilityId::Mimic, AbilityId::DoubleTeam, AbilityId::Reflect, AbilityId::Bide, AbilityId::Rest, AbilityId::Substitute} },
