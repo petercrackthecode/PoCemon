@@ -4,6 +4,7 @@
 #include "Enums.h"
 #include "PoCemon.h"
 #include "randomGenerator.h"
+#include "Battle.h"
 
 using namespace std;
 
@@ -70,15 +71,26 @@ bool AttackAbility::doesAttackHit(Pocemon &attacker, Pocemon &defender) const
 bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 {
     cout << attacker.name << " used " << this->name << "!" << endl;
+
+    BattleEvent evt(BattleEvent::BEType::AbilityUsed, &attacker, &defender, this, true, 0 );
+    Battle::addEvent(evt);
+
     if (doesAttackHit(attacker, defender))
     {
         cout << "Attack missed." << endl;
+
+        evt = BattleEvent(BattleEvent::BEType::AbilityMissed, &attacker, &defender, this, false, 0);
+        Battle::addEvent(evt);
+
         return false; // Attack misses.
     }
 
     cout << "Attack hit!" << endl;
-    attacker.doDamage(*this, defender);
+    int dmg = attacker.doDamage(*this, defender);
     defender.displayInfo();
+
+    evt = BattleEvent(BattleEvent::BEType::AbilityDamageDealt, &attacker, &defender, this, true, dmg);
+    Battle::addEvent(evt);
 
     return true;
 }

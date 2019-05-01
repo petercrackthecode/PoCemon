@@ -19,6 +19,13 @@ void Battle::addEvent(BattleEvent evt)
 };
 
 
+BattleEvent Battle::peekNextEvent()
+{
+    BattleEvent evt = battleEvents.front();
+    return evt;
+}
+
+
 BattleEvent Battle::extractNextEvent()
 {
     BattleEvent evt = battleEvents.front();

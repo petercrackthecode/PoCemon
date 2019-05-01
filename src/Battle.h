@@ -12,8 +12,9 @@ public:
     Battle(const std::string &p1Name, const std::string &p2Name);
 
     bool next();
-    static void addEvent(BattleEvent evt);
-    BattleEvent extractNextEvent();
+    static void addEvent(BattleEvent evt);;
+    BattleEvent peekNextEvent();
+    BattleEvent extractNextEvent()
 
 private:
     Player &p1;

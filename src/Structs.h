@@ -24,16 +24,9 @@ struct AbilityOutcome
 
 struct BattleEvent
 {
-    Pocemon *source;
-    Pocemon *target;
-    Ability *abilitySource;
-    Player *playerSource;
-    StatusEffect effectSource;
-    bool isSucess;
-    int amount;
-    
-    enum class BattleEventType
+    enum class BEType
     {
+        Undefined,
         PocemonSwitched,
         AbilityUsed,
         AbilityMissed,
@@ -48,6 +41,22 @@ struct BattleEvent
         PocemonFainted,
         PlayerDefeated,
     };
+
+    BEType type;
+    Pocemon *source;
+    Pocemon *target;
+    Ability *abilitySource;
+    Player *playerSource;
+    StatusEffect effectSource;
+    bool isSucess;
+    int amount;
+
+    BattleEvent() : type{ BEType::Undefined }, source{ nullptr }, target{ nullptr }, abilitySource{ nullptr }, playerSource{ nullptr }, effectSource{ StatusEffect::None }, isSucess{ true }, amount{ 0 }
+    {}
+    
+    BattleEvent(const BEType &tempType, Pocemon *sourceTemp, Pocemon *tempTarget, Ability *tempAbilitySource, bool tempIsSuccess = false, int tempAmount = 0) : type{ tempType }, source{ sourceTemp }, target{ tempTarget }, abilitySource{ tempAbilitySource }, playerSource{ nullptr }, effectSource{ StatusEffect::None }, isSucess{ tempIsSuccess }, amount{ tempAmount }
+    {}
+
 };
 
 
