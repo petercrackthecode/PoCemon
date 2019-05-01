@@ -15,6 +15,7 @@ public:
     void generateRandomTeam(const int &minLvl = 75, const int &maxLvl = 95);
     void displayTeam();
     Pocemon* getActivePocemon();
+    void setActivePocemon(const int &i);
 
     // *******************************************************
     // *** Everything below will be private in the future: ***

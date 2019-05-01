@@ -51,6 +51,17 @@ Pocemon* Player::getActivePocemon()
     //return activePocemon;
 }
 
+
+void Player::setActivePocemon(const int &i)
+{
+    if (i >= pocemonTeam.size() || i < 0) {
+        throw "Selected index is higher than team size";
+    }
+
+    activePocemonIndex = i;
+}
+
+
 // Visiting a PoceCenter heals all your PoCemon and removes any status effects (poisoned, burned, etc).
 void Player::visitPoceCenter()
 {
@@ -75,8 +86,10 @@ void Player::generateRandomTeam(const int &minLvl /* = 75 */, const int &maxLvl 
     {
         PkmnId randId = static_cast<PkmnId>(randomGenerator(1, 151));
         int randLvl = randomGenerator(minLvl, maxLvl);
-
-        this->addToTeam(Pocemon(randId, randLvl));
+        
+        Pocemon newPocemon(randId, randLvl);
+        newPocemon.assignRandomAbilitySet();
+        this->addToTeam(newPocemon);
     }
 
     this->activePocemonIndex = 0;
