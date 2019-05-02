@@ -17,6 +17,8 @@ public:
     Pocemon* getActivePocemon();
     void setActivePocemon(const int &i);
 
+    std::string getName() const { return name; }
+
     // *******************************************************
     // *** Everything below will be private in the future: ***
     // *******************************************************
