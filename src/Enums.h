@@ -107,6 +107,25 @@ enum class Type
     Fairy
 };
 
+enum class BEvtType
+{
+    Undefined,
+    PocemonDeployed,
+    PocemonWithdrawn,
+    AbilityUsed,
+    AbilityMissed,
+    AbilityDamageDealt, // Display how much damage was done.
+    AbilityHpHealed,
+    CriticalHit, // Display if the attack was a critical hit.
+    Effective, // Display if the attack was 'super effective' or 'not very effective'
+    StatusEffectApplied, // Display if the a new status effect was applied.
+    StatusEffectRemoved, // Display if an existing status effect was removed.
+    StatusEffectDamageDealt, // do poison/burn/leech seed damage.
+    StatusEffectHpHealed, // do leech seed healing.
+    PocemonFainted,
+    PlayerDefeated,
+};
+
 // We might want to switch the Type enum to a
 // namespaced enum or global enum in the future...
 //
