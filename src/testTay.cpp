@@ -645,15 +645,16 @@ void tayGraphicsAndBattleTest()
             b.setAttackingPriority();
             while (b.actionsPending() && p1.activePocemonIndex < 6 && p2.activePocemonIndex < 6) {
                 b.getAttackingPlayer()->getActivePocemon()->getAbility(b.getAttackerAction())->use(*b.getAttackingPlayer()->getActivePocemon(), *b.getDefendingPlayer()->getActivePocemon());
-                if (p1.getActivePocemon()->getCurHp() <= 0) {
-                    p1.activePocemonIndex++;
-                    evtTemp = BattleEvent(BEvtType::PocemonDeployed, p1.getActivePocemon(), p1);
+                if (b.getAttackingPlayer()->getActivePocemon()->getCurHp() <= 0) {
+                    b.getAttackingPlayer()->activePocemonIndex++;
+                    evtTemp = BattleEvent(BEvtType::PocemonDeployed, b.getAttackingPlayer()->getActivePocemon(), *b.getAttackingPlayer());
                     Battle::addEvent(evtTemp);
                 }
-                if (p2.getActivePocemon()->getCurHp() <= 0) {
-                    p2.activePocemonIndex++;
-                    evtTemp = BattleEvent(BEvtType::PocemonDeployed, p2.getActivePocemon(), p2);
+                if (b.getDefendingPlayer()->getActivePocemon()->getCurHp() <= 0) {
+                    b.getDefendingPlayer()->activePocemonIndex++;
+                    evtTemp = BattleEvent(BEvtType::PocemonDeployed, b.getDefendingPlayer()->getActivePocemon(), *b.getDefendingPlayer());
                     Battle::addEvent(evtTemp);
+                    break;
                 }
                 
                 b.switchPlayerRoles();

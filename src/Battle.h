@@ -26,7 +26,7 @@ public:
     void setP1Action(int i);
     void setP2Action(int i);
     bool playersReady() { return (pendingActions == 2) ? true : false; };
-    void resetPlayerActions() { p1Action = -1; p2Action = -1; };
+    void resetPlayerActions() { p1Action = -1; p2Action = -1; pendingActions = 0; };
     bool actionsPending() const { return (pendingActions > 0) ? true : false; }
 
     void setAttackingPriority();
