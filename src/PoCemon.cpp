@@ -6,9 +6,11 @@
 #include <iostream>
 #include <iomanip>
 #include "AttackAbility.h"
+#include "Battle.h"
 #include "Enums.h"
 #include "randomGenerator.h"
 #include "AbilityFactory.h"
+#include "Structs.h"
 
 using namespace std; 
 
@@ -154,7 +156,7 @@ bool Pocemon::modifyStatStage(Stat statToModify, const int &numOfStages)
 }
 
 
-int Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
+int Pocemon::doDamage(AttackAbility &attack, Pocemon &defendingPocemon)
 {
     int tempAtk;
     int tempDef;
@@ -171,9 +173,20 @@ int Pocemon::doDamage(const AttackAbility &attack, Pocemon &defendingPocemon)
     }
 
 
-	//calculating damage that will be done to defendingPocemon, using statistics of defendingPocemon
+	
 	double modifier = attack.getDmgMultiplier(defendingPocemon);
 	
+    if (modifier > 1)
+    {
+        BattleEvent evt(BEvtType::Effective, this, &defendingPocemon, &attack, true, 0);
+        Battle::addEvent(evt);
+    }
+    else if (modifier < 1)
+    {
+        BattleEvent evt(BEvtType::Effective, this, &defendingPocemon, &attack, false, 0);
+        Battle::addEvent(evt);
+    }
+
 #pragma warning(suppress : 4244) // Supress conversion warning (from double to int)
 	int damage = ((((((((2 * this->level) / 5) + 2) * attack.getPower() * tempAtk) / tempDef) / 50) + 2) * modifier);
 

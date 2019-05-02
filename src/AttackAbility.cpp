@@ -70,16 +70,16 @@ bool AttackAbility::doesAttackHit(Pocemon &attacker, Pocemon &defender) const
 
 bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
 {
-    cout << attacker.name << " used " << this->name << "!" << endl;
+    cout << attacker.getName() << " used " << this->getName() << "!" << endl;
 
-    BattleEvent evt(BattleEvent::BEType::AbilityUsed, &attacker, &defender, this, true, 0 );
+    BattleEvent evt(BEvtType::AbilityUsed, &attacker, &defender, this, true, 0 );
     Battle::addEvent(evt);
 
-    if (doesAttackHit(attacker, defender))
+    if (!doesAttackHit(attacker, defender))
     {
         cout << "Attack missed." << endl;
 
-        evt = BattleEvent(BattleEvent::BEType::AbilityMissed, &attacker, &defender, this, false, 0);
+        evt = BattleEvent(BEvtType::AbilityMissed, &attacker, &defender, this, false, 0);
         Battle::addEvent(evt);
 
         return false; // Attack misses.
@@ -89,8 +89,20 @@ bool AttackAbility::use(Pocemon &attacker, Pocemon &defender)
     int dmg = attacker.doDamage(*this, defender);
     defender.displayInfo();
 
-    evt = BattleEvent(BattleEvent::BEType::AbilityDamageDealt, &attacker, &defender, this, true, dmg);
+    evt = BattleEvent(BEvtType::AbilityDamageDealt, &attacker, &defender, this, true, dmg);
     Battle::addEvent(evt);
+
+    if (attacker.getCurHp() <= 0)
+    {
+        evt = BattleEvent(BEvtType::PocemonFainted, &attacker, &attacker, this, true, 0);
+        Battle::addEvent(evt);
+    }
+
+    if (defender.getCurHp() <= 0)
+    {
+        evt = BattleEvent(BEvtType::PocemonFainted, &attacker, &defender, this, true, 0);
+        Battle::addEvent(evt);
+    }
 
     return true;
 }
