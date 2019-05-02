@@ -27,6 +27,7 @@ public:
     virtual ~Ability() {};
 
     virtual bool use(Pocemon &attacker, Pocemon &defender) = 0;
+    std::string getName() const { return name; }
 	AbilityCategory getAbilityCategory() const { return abilityCategory; }
 	Type getType() const { return type; }
 	int getPower() const { return power; }
