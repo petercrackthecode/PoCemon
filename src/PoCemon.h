@@ -14,7 +14,7 @@ public:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
 
-	int doDamage(const AttackAbility &attack, Pocemon &pocemon1);
+	int doDamage(AttackAbility &attack, Pocemon &pocemon1);
 
     void displayInfo(bool detailed = false) const;
 
