@@ -18,12 +18,11 @@ private:
     Player mPlayer;
     constexpr static double PlayerSpeed= 100.f;
 public:
-    Game() : mWindow(sf::VideoMode(2000, 1200), "PoCemon"), mPlayer(std::string("Player 1")) {
+    Game() : mWindow(sf::VideoMode(1800, 1000), "PoCemon"), mPlayer(std::string("Player 1")) {
         
     }
     
     void run();
-    void draw();
 };
 
 #endif /* GAME_H */
