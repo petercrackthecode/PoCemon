@@ -1,5 +1,5 @@
-#ifndef SFTEAMLISTITEM_H
-#define SFTEAMLISTITEM_H
+#ifndef TEAMLISTITEM_H
+#define TEAMLISTITEM_H
 
 #include "PoCemon.h"
 #include "Player.h"
@@ -7,10 +7,10 @@
 #include <SFML/Window.hpp>
 
 
-class sfTeamListItem
+class TeamListItem
 {
 public:
-    sfTeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale, sf::Font &font, sf::Texture &texture);
+    TeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale, sf::Font &font, sf::Texture &texture);
 
     void update();
 

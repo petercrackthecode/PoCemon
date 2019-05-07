@@ -3,7 +3,7 @@
 #include <SFML/Window.hpp>
 
 
-sfTeamListItem::sfTeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale, sf::Font &font, sf::Texture &texture) : poce{ &p }, iPoce{ static_cast<int>(poce->getId()) }
+TeamListItem::TeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale, sf::Font &font, sf::Texture &texture) : poce{ &p }, iPoce{ static_cast<int>(poce->getId()) }
 {
     poceSprite.setPosition(pos);
     poceSprite.setTexture(texture);
@@ -16,12 +16,12 @@ sfTeamListItem::sfTeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale
     update();
 }
 
-void sfTeamListItem::update()
+void TeamListItem::update()
 {
     nameText.setString(poce->getName());
 }
 
-void sfTeamListItem::Render(sf::RenderWindow &window, int iFrame)
+void TeamListItem::Render(sf::RenderWindow &window, int iFrame)
 {
     poceSprite.setTextureRect(sf::IntRect((SPRITESIZE*iPoce), ((SPRITESIZE)* iFrame), SPRITESIZE, SPRITESIZE));
     window.draw(nameText);
