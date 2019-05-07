@@ -1,11 +1,31 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Player.h"
+#include <stack>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "AssetManager.h"
+#include "Player.h"
+
+class GameState;
 
 class Game  {
+public:
+    Game(const sf::VideoMode &videoMode, const std::string &appName, const int &setting = sf::Style::Default);
+
+    void run();
+    void draw();
+
+    void pushState(GameState* state);
+    void popState();
+    void changeState(GameState* state);
+    GameState* peekState();
+
+    
+    AssetManager mAssetMgr;
+    sf::RenderWindow mWindow;
+
+
 private:
     // private member funcs
     void update(sf::Time deltaTime); // update game through a constant time frame
@@ -14,16 +34,8 @@ private:
     void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
     
     // private member vars
-    sf::RenderWindow mWindow;
-    Player mPlayer;
-    constexpr static double PlayerSpeed= 100.f;
-public:
-    Game() : mWindow(sf::VideoMode(2000, 1200), "PoCemon"), mPlayer(std::string("Player 1")) {
-        
-    }
-    
-    void run();
-    void draw();
+    std::stack<GameState*> states;
+
 };
 
 #endif /* GAME_H */

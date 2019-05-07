@@ -1,17 +1,50 @@
-#include "Game.h"
-#include "Player.h"
 
 #include <SFML/Graphics.hpp>
+#include "Game.h"
+#include "GameState.h"
+#include "Player.h"
+
+Game::Game(const sf::VideoMode &videoMode,
+           const std::string &appName,
+           const int &setting /*= sf::Style::Default*/)
+    : mWindow{ videoMode, "PoCemon", setting }
+{
+    mWindow.setFramerateLimit(60);
+    mWindow.setKeyRepeatEnabled(false);
+    sf::View view(sf::FloatRect(0, 0, 480, 270));
+    mWindow.setView(view);
+
+    mAssetMgr.loadFont(FontId::MainFont, "graphics/gbFont.ttf");
+    mAssetMgr.loadTexture(TextureId::BattleMenuBorder, "graphics/menu-border-pkbll.png");
+    mAssetMgr.loadTexture(TextureId::MenuBackground, "graphics/background.png");
+    mAssetMgr.loadTexture(TextureId::MenuExit, "graphics/button_exit.png");
+    mAssetMgr.loadTexture(TextureId::MenuLogo, "graphics/PoCemon++ Logo.png");
+    mAssetMgr.loadTexture(TextureId::MenuPlay, "graphics/button_play.png");
+    mAssetMgr.loadTexture(TextureId::MiniPoceSprites, "graphics/gen1-mini-sprites.png");
+    mAssetMgr.loadTexture(TextureId::PoceSprites, "graphics/gen1-sprites.png");
+    mAssetMgr.loadTexture(TextureId::TypeLabels, "graphics/PoCemonTypes.png");
+}
+
 
 void Game::run()    {
     sf::Clock clock;
     
     while (mWindow.isOpen())    {
         sf::Time deltaTime= clock.restart();
+        float dt = deltaTime.asSeconds();
+
+        if (peekState() == nullptr)
+            continue;
+        peekState()->handleInput();
+        peekState()->update(dt);
+        this->mWindow.clear(sf::Color::Black);
+        peekState()->draw(dt);
+        this->mWindow.display();
+
         // After get events from user, update game state, then render images
-        processEvents();
-        update(deltaTime);
-        render();
+        //processEvents();
+        //update(deltaTime);
+        //render();
     }
 }
 
@@ -49,3 +82,35 @@ void Game::render() {
     //mWindow.draw(mPlayer);
     mWindow.display();
 }
+
+
+void Game::pushState(GameState* state)
+{
+    this->states.push(state);
+
+    return;
+}
+
+void Game::popState()
+{
+    delete this->states.top();
+    this->states.pop();
+
+    return;
+}
+
+void Game::changeState(GameState* state)
+{
+    if (!this->states.empty())
+        popState();
+    pushState(state);
+
+    return;
+}
+
+GameState* Game::peekState()
+{
+    if (this->states.empty()) return nullptr;
+    return this->states.top();
+}
+
