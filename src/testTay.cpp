@@ -319,17 +319,17 @@ void tayGraphicsAndBattleTest()
         // error...
     }
 
-    vector<sfTeamListItem> p1TeamList;
+    vector<TeamListItem> p1TeamList;
     for (int i = 0; i < 6; i++)
     {
-        sfTeamListItem a(p1[i], sf::Vector2f(6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i%2))), fScale, font, miniSprites);
+        TeamListItem a(p1[i], sf::Vector2f(6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i%2))), fScale, font, miniSprites);
         p1TeamList.push_back(a);
     }
 
-    vector<sfTeamListItem> p2TeamList;
+    vector<TeamListItem> p2TeamList;
     for (int i = 0; i < 6; i++)
     {
-        sfTeamListItem a(p2[i], sf::Vector2f(screenW*.5f + 6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i % 2))), fScale, font, miniSprites);
+        TeamListItem a(p2[i], sf::Vector2f(screenW*.5f + 6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i % 2))), fScale, font, miniSprites);
         p2TeamList.push_back(a);
     }
 
@@ -684,8 +684,8 @@ void tayGraphicsAndBattleTest()
         //window.draw(text);
         window.draw(p1PoceNameText);
         window.draw(p2PoceNameText);
-        std::for_each(p1TeamList.begin(), p1TeamList.end(), [&window, &iFrameMini](sfTeamListItem a) { a.Render(window, iFrameMini); });
-        std::for_each(p2TeamList.begin(), p2TeamList.end(), [&window, &iFrameMini](sfTeamListItem a) { a.Render(window, iFrameMini); });
+        std::for_each(p1TeamList.begin(), p1TeamList.end(), [&window, &iFrameMini](TeamListItem a) { a.Render(window, iFrameMini); });
+        std::for_each(p2TeamList.begin(), p2TeamList.end(), [&window, &iFrameMini](TeamListItem a) { a.Render(window, iFrameMini); });
         
 
         // end the current frame
