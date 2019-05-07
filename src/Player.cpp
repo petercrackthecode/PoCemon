@@ -5,6 +5,12 @@
 #include "Player.h"
 #include "randomGenerator.h"
 
+Player::Player() : name{ "" }, activePocemonIndex{ 0 }
+{
+
+}
+
+
 Player::Player(const std::string &tempName) : name{tempName}, activePocemonIndex{0}
 {
 

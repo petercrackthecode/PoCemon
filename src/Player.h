@@ -8,6 +8,7 @@
 class Player
 {
 public:
+    Player();
     Player(const std::string &tempName);
     void addToTeam(Pocemon &);
     Pocemon& operator[](const int &i);
