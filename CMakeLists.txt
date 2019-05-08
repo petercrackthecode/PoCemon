@@ -4,8 +4,11 @@ project(PoCemon VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+get_filename_component(PARENT_DIR ${CMAKE_SOURCE_DIR}/../../ DIRECTORY)
+
+message(${PARENT_DIR})
 set(SFML_STATIC_LIBRARIES TRUE)
-set(SFML_DIR "C:/Libraries/SFML-2.5.1/lib/cmake/SFML")
+set(SFML_DIR "${PARENT_DIR}/Libraries/SFML-2.5.1/lib/cmake/SFML")
 find_package(SFML 2 COMPONENTS graphics)
 
 
