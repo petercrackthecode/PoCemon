@@ -1,3 +1,5 @@
+// Adapted from: SFML Blueprints By Maxime Barbier, 2015.
+
 #include "sfWidget.h"
 
 using namespace std;
@@ -27,8 +29,6 @@ void Widget::draw(sf::RenderTarget& target, sf::RenderStates states) const
     states.transform *= getTransform();
 	
 }
-
-
 
 
 void Widget::updateShape()

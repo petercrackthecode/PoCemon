@@ -1,3 +1,5 @@
+// Adapted from: SFML Blueprints By Maxime Barbier, 2015.
+
 #ifndef ASSETMANAGER_H
 #define ASSETMANAGER_H
 

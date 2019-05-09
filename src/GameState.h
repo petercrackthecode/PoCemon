@@ -1,3 +1,5 @@
+// Adapted from: SFML Blueprints By Maxime Barbier, 2015.
+
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
