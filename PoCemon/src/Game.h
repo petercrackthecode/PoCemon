@@ -4,6 +4,7 @@
 #include "Player.h"
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Game  {
 private:
@@ -17,8 +18,9 @@ private:
     sf::RenderWindow mWindow;
     Player mPlayer;
     constexpr static double PlayerSpeed= 100.f;
+    sf::SoundBuffer sBuffer;
 public:
-    Game() : mWindow(sf::VideoMode(1800, 1000), "PoCemon"), mPlayer(std::string("Player 1")) {
+    Game() : mWindow(sf::VideoMode(1800, 1000), "PoCemon", sf::Style::Default), mPlayer(std::string("Player 1")) {
         
     }
     

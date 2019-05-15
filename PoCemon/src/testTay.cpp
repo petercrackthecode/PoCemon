@@ -320,18 +320,20 @@ void tayGraphicsAndBattleTest()
     }
 
     vector<sfTeamListItem> p1TeamList;
+    sf::Vector2f pos;
     for (int i = 0; i < 6; i++)
     {
-        // Bug: 6 parameters, while the defined constructor only takes 5
-        sfTeamListItem a(p1[i], sf::Vector2f(6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i%2))), fScale, font, miniSprites);
+        pos= {6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i%2))};
+        sfTeamListItem a(p1[i], pos, fScale, font, miniSprites);
         p1TeamList.push_back(a);
     }
 
     vector<sfTeamListItem> p2TeamList;
+    sf::Vector2f pos1;
     for (int i = 0; i < 6; i++)
     {
-        // Bug: 6 parameters, while the defined constructor only takes 5
-        sfTeamListItem a(p2[i], sf::Vector2f(screenW*.5f + 6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i % 2))), fScale, font, miniSprites);
+        pos1= sf::Vector2f(screenW*.5f + 6.f*fScale + (i % 2) * screenW*.25f, screenH*.65f + 8.f * fScale * i - (8.f * fScale * (i % 2)));
+        sfTeamListItem a(p2[i], pos1, fScale, font, miniSprites);
         p2TeamList.push_back(a);
     }
 

@@ -10,7 +10,7 @@
 class sfTeamListItem
 {
 public:
-    sfTeamListItem(Pocemon &p, sf::Vector2f &pos, const float &scale, sf::Font &font, sf::Texture &texture);
+    sfTeamListItem(Pocemon &p, sf::Vector2f& pos, const float &scale, sf::Font &font, sf::Texture &texture);
 
     void update();
 

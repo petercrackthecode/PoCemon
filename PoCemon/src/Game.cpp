@@ -5,7 +5,11 @@
 
 void Game::run()    {
     sf::Clock clock;
+    sf::Music music;
+    if (!music.openFromFile("sounds/background.ogg"))
+        return; // Failed to load
     
+    music.play();
     while (mWindow.isOpen())    {
         sf::Time deltaTime= clock.restart();
         // After get events from user, update game state, then render images
@@ -29,10 +33,6 @@ void Game::processEvents()  {
 }
 
 void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed)  {
-    
-}
-
-void Game::draw()   {
     
 }
 
