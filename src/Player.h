@@ -17,17 +17,18 @@ public:
     void displayTeam();
     Pocemon* getActivePocemon();
     void setActivePocemon(const int &i);
+	void setPreppedPocemon(const int &i);
+	void deployPreppedPocemon();
+	bool hasPreppedPocemon() const { return (activePocemonIndex != preppedPocemonIndex && preppedPocemonIndex >= 0); }
 
     std::string getName() const { return name; }
 
-    // *******************************************************
-    // *** Everything below will be private in the future: ***
-    // *******************************************************
+	std::vector<Pocemon> pocemonTeam;
+	int activePocemonIndex = 0;
 
+private:
     std::string name;
-    std::vector<Pocemon> pocemonTeam;
-    int activePocemonIndex;
-
+	int preppedPocemonIndex = -1;
 
 
 };

@@ -8,11 +8,14 @@
 #include "PoCemonData.h"
 #include "AttackAbility.h"
 
+class Player;
+
 class Pocemon
 {
 public:
     // Creates a PoCemon at the requested level.
     Pocemon(const PkmnId &selectedId, const int &lvl);
+	Pocemon() {};
 
 	int doDamage(AttackAbility &attack, Pocemon &pocemon1);
 
@@ -60,10 +63,11 @@ public:
     BasicAttributeReturn getBasicAttribute(BasicAttribute type) const;
     int getStat(Stat type) const;
 
-    // *******************************************************
-    // *** Everything below will be private in the future: ***
-    // *******************************************************
+	Player* getOwner() const { return owner; };
+	void setOwner(Player *ownerTemp) { owner = ownerTemp; };
+	Player *owner;
 
+private:
     // Calculates an individual stat value.
     // If calculating HP, set "isHp" to true.
     static int calculateStat(const int &lvl,

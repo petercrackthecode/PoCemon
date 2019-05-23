@@ -18,7 +18,7 @@ void AssetManager::loadTexture(const TextureId &name, const std::string& filenam
 
 sf::Texture& AssetManager::getTextureRef(const TextureId &texture)
 {
-    return this->textures.at(texture);
+    return textures.at(texture);
 }
 
 
@@ -36,5 +36,9 @@ void AssetManager::loadFont(const FontId &name, const std::string &filename)
 
 sf::Font& AssetManager::getFontRef(const FontId &font)
 {
-    return this->fonts.at(font);
+    return fonts.at(font);
 }
+
+//std::map<TextureId, sf::Texture> AssetManager::textures;
+//std::map<FontId, sf::Font> AssetManager::fonts;
+

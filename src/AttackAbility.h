@@ -6,7 +6,6 @@
 #include "Ability.h"
 class Pocemon;
 
-// TODO: Rename to AttackAbility
 class AttackAbility : public Ability
 {
 public:

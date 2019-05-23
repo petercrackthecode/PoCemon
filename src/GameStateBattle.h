@@ -5,6 +5,8 @@
 #include "Battle.h"
 #include "GameState.h"
 #include "Player.h"
+#include "sfBattleScreen.h"
+#include "sfMenuContainer.h"
 #include "sfWidget.h"
 
 class GameStateBattle : public GameState
@@ -16,15 +18,12 @@ public:
     virtual void update(const float dt);
     virtual void handleInput();
 
-
+	Battle b;
 
 private:
-
     sf::View view;
-    Widget *mWidget;
-    Player mP1;
-    Player mP2;
-    Battle b;
+    MenuContainer *mMenu;
+	BattleScreen *mBattleScreen;
 };
 
 #endif /* GAMESTATEBATTLE_H */

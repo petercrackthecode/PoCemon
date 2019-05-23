@@ -21,10 +21,12 @@ public:
     void changeState(GameState* state);
     GameState* peekState();
 
+	void setLetterboxView(int windowWidth, int windowHeight);
     
     AssetManager mAssetMgr;
     sf::RenderWindow mWindow;
 
+	void toggleFullscreen();
 
 private:
     // private member funcs
@@ -35,6 +37,7 @@ private:
     
     // private member vars
     std::stack<GameState*> states;
+	bool isFullscreen = false;
 
 };
 

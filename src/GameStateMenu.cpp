@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "AssetManager.h"
@@ -10,37 +9,89 @@
 using namespace std;
 
 GameStateMenu::GameStateMenu(Game* gameTemp)
-    : GameState{ gameTemp }
+	: GameState{ gameTemp }
 {
-    //this->game = gameTemp;
-    sf::Vector2f pos = sf::Vector2f(this->game->mWindow.getSize());
-    
+	//this->game = gameTemp;
+	sf::Vector2f pos = sf::Vector2f(this->game->mWindow.getSize());
+
 
 	mPlaceholderText.setFont(game->mAssetMgr.getFontRef(FontId::MainFont));
 	mPlaceholderText.setCharacterSize(24);
-	mPlaceholderText.setScale(.3, .3);
-	mPlaceholderText.setColor(sf::Color::Black);
+	mPlaceholderText.setScale(.3f, .3f);
+	mPlaceholderText.setColor(sf::Color::White);
 	mPlaceholderText.setString(mPlaceholderString);
+	//mPlaceholderText.setPosition(2.f, 2.f);
+	//mPlaceholderText.setOrigin(mPlaceholderText.getGlobalBounds().width / 2, mPlaceholderText.getGlobalBounds().height / 2);
+	mPlaceholderText.setPosition(185.f, 150.f);
 
-    //this->mView.setSize(pos);
-    pos *= 0.5f;
-    //this->mView.setCenter(pos);
-    //mBackground.setOrigin(pos);
-    //mBackground.move(0.f, 0.f);
-    //mBackground.setScale(.3f, .3f);
-    //this->mBackground.setTexture(this->game->mAssetMgr.getTextureRef(TextureId::MenuBackground));
+	float curY = 170.f;//10.f + mPlaceholderText.getGlobalBounds().height;
+
+	mP1Prompt.setFont(game->mAssetMgr.getFontRef(FontId::MainFont));
+	mP1Prompt.setCharacterSize(24);
+	mP1Prompt.setScale(.3, .3);
+	mP1Prompt.setColor(sf::Color::White);
+	mP1Prompt.setString("Player 1: ");
+	//mP1Prompt.setPosition(2.f, curY);
+	mP1Prompt.setPosition(170.f, curY);
+
+	mP1Text.setFont(game->mAssetMgr.getFontRef(FontId::MainFont));
+	mP1Text.setCharacterSize(24);
+	mP1Text.setScale(.3, .3);
+	mP1Text.setColor(sf::Color::White);
+	mP1Text.setString(mP1Name);
+	//mP1Text.setPosition(2.f + mP1Prompt.getGlobalBounds().width, curY);
+	mP1Text.setPosition(2.f + mP1Prompt.getGlobalBounds().width + 170.f, curY);
+
+	curY += 10.f + mP1Prompt.getGlobalBounds().height;
+
+	mP2Prompt.setFont(game->mAssetMgr.getFontRef(FontId::MainFont));
+	mP2Prompt.setCharacterSize(24);
+	mP2Prompt.setScale(.3, .3);
+	mP2Prompt.setColor(sf::Color::White);
+	mP2Prompt.setString("Player 2: ");
+	mP2Prompt.setPosition(170.f, curY);
+
+	mP2Text.setFont(game->mAssetMgr.getFontRef(FontId::MainFont));
+	mP2Text.setCharacterSize(24);
+	mP2Text.setScale(.3, .3);
+	mP2Text.setColor(sf::Color::White);
+	mP2Text.setString(mP2Name);
+	mP2Text.setPosition(2.f + mP1Prompt.getGlobalBounds().width + 170.f, curY);
+
+	mLogo.setTexture(game->mAssetMgr.getTextureRef(TextureId::MenuLogo));
+	mLogo.setOrigin(mLogo.getGlobalBounds().width / 2,
+		mLogo.getGlobalBounds().height / 2);
+	mLogo.setScale(.15f, .15f);
+	mLogo.setPosition(240, 90);
+
+
+	//this->mView.setSize(pos);
+	pos *= 0.5f;
+	//this->mView.setCenter(pos);
+	//mBackground.setOrigin(pos);
+	//mBackground.move(0.f, 0.f);
+	//mBackground.setScale(.3f, .3f);
+	//this->mBackground.setTexture(this->game->mAssetMgr.getTextureRef(TextureId::MenuBackground));
 }
 
 
 void GameStateMenu::draw(const float dt)
 {
-    //this->game->mWindow.setView(this->mView);
+	//this->game->mWindow.setView(this->mView);
+	sf::RenderWindow &win = game->mWindow;
+	win.clear(sf::Color::Black);
+	win.draw(this->mBackground);
+	win.draw(mPlaceholderText);
+	win.draw(mP1Prompt);
+	win.draw(mP1Text);
+	win.draw(mLogo);
+	if (mP1Done)
+	{
+		win.draw(mP2Prompt);
+		win.draw(mP2Text);
+	}
 
-    this->game->mWindow.clear(sf::Color::White);
-    this->game->mWindow.draw(this->mBackground);
-	this->game->mWindow.draw(mPlaceholderText);
-
-    return;
+	return;
 }
 
 void GameStateMenu::update(const float dt)
@@ -50,111 +101,90 @@ void GameStateMenu::update(const float dt)
 
 void GameStateMenu::handleInput()
 {
-    sf::Event event;
+	sf::Event event;
 
-    while (this->game->mWindow.pollEvent(event))
-    {
-        switch (event.type)
-        {
-        case sf::Event::Closed:
-        {
-            game->mWindow.close();
-            break;
-        }
-        /* Resize the window */
-        case sf::Event::Resized:
-        {
-            //sf::Vector2f ratio(480.f / event.size.width, 270.f / event.size.height);
+	while (this->game->mWindow.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+		{
+			game->mWindow.close();
+			break;
+		}
 
-            //if (ratio.x - ratio.y > 0)
-            //{
-            //    //this->mView.setSize(event.size.width * ratio.y, event.size.height);
-            //} else {
-            //    //this->mView.setSize(event.size.width, event.size.height * ratio.x);
-            //}
+		case sf::Event::Resized:
+		{
+			game->setLetterboxView(event.size.width, event.size.height);
+			break;
+		}
 
-            //const sf::Vector2u designedsize(480, 270);
+		case sf::Event::TextEntered:
+		{
+			if (event.key.code >= 32 && event.key.code <= 126)
+			{
+				if (!mP1Done)
+				{
+					mP1Name += event.text.unicode;
+					mP1Text.setString(mP1Name);
+				}
+				else
+				{
+					mP2Name += event.text.unicode;
+					mP2Text.setString(mP2Name);
+				}
+			}
+		}
 
-            //sf::Vector2u windowSize(event.size.width, event.size.height);
-            //
-            //sf::FloatRect viewport(0.f, 0.f, 1.f, 1.f);
-
-            //float screenwidth = windowSize.x / static_cast<float>(designedsize.x);
-            //float screenheight = windowSize.y / static_cast<float>(designedsize.y);
-
-            //if (screenwidth > screenheight)
-            //{ 
-            //    viewport.width = screenheight / screenwidth;
-            //    viewport.left = (1.f - viewport.width) / 2.f;
-            //}
-            //else if (screenwidth < screenheight)
-            //{
-            //    viewport.height = screenwidth / screenheight;
-            //    viewport.top = (1.f - viewport.height) / 2.f;
-            //}
-
-            //sf::View view(sf::FloatRect(0, 0, designedsize.x, designedsize.y));
-            //view.setViewport(viewport);
-
-            //this->game->mWindow.setView(view);
-            //
-            //mBackground.setScale(designedsize.x / viewport.width, designedsize.y / viewport.height);
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //this->mView.setSize(event.size.width, event.size.height);
-            //this->mBackground.setPosition(this->game->mWindow.mapPixelToCoords(sf::Vector2i(0, 0)));
-            //this->mBackground.setScale(
-            //    float(event.size.width) / float(this->mBackground.getTexture()->getSize().x),
-            //    float(event.size.height) / float(this->mBackground.getTexture()->getSize().y));
-            break;
-        }
-        case sf::Event::KeyPressed:
-        {
-            if (event.key.code == sf::Keyboard::Escape)
-                this->game->mWindow.close();
-            else if (event.key.code == sf::Keyboard::Space)
-                this->startBattle();
-            break;
+		case sf::Event::KeyPressed:
+		{
+			if (event.key.code == sf::Keyboard::Escape)
+				this->game->mWindow.close();
+			else if (event.key.code == sf::Keyboard::Enter)
+			{
+				if (!mP1Done)
+					mP1Done = true;
+				else
+					this->startBattle();
+			}
+			else if (event.key.code == sf::Keyboard::BackSpace)
+			{
+				if (!mP1Done && mP1Name.length() > 0)
+				{
+					mP1Name.pop_back();
+					mP1Text.setString(mP1Name);
+				}
+				else if (mP2Name.length() > 0)
+				{
+					mP2Name.pop_back();
+					mP2Text.setString(mP2Name);
+				}
+			}
+			else if (event.key.code == sf::Keyboard::F11)
+			{
+				game->toggleFullscreen();
+			}
+			break;
 
 
-        }
-        default: break;
-        }
-    }
+		}
+		default: break;
+		}
+	}
 
-    return;
+	return;
 }
 
 
 void GameStateMenu::startBattle()
 {
-    string p1Name;
-    string p2Name;
+	mP1 = Player(mP1Name);
+	mP2 = Player(mP2Name);
 
-    std::cout << "Enter each player's name." << endl;
-    cout << "Player 1: ";
-    cin >> p1Name;
-    cout << "Player 2: ";
-    cin >> p2Name;
+	mP1.generateRandomTeam();
+	mP2.generateRandomTeam();
 
-    mP1 = Player(p1Name);
-    mP2 = Player(p2Name);
+	this->game->pushState(new GameStateBattle(this->game, mP1, mP2));
 
-    mP1.generateRandomTeam();
-    mP2.generateRandomTeam();
-
-    this->game->pushState(new GameStateBattle(this->game, mP1, mP2));
-
-    return;
+	return;
 }

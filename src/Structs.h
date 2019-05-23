@@ -133,7 +133,8 @@ struct BattleEvent
             msg = this->playerSource->getName() + " has been defeated!";
             break;
         default:
-            throw "Invalid case"; // TODO: Class exception.
+            //throw "Invalid case"; // TODO: Class exception.
+			msg = "LOL";
             break;
         }
 

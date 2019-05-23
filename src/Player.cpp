@@ -21,6 +21,7 @@ void Player::addToTeam(Pocemon &newPocemon)
 {
     if (pocemonTeam.size() < 6)
     {
+		newPocemon.setOwner(this);
         pocemonTeam.push_back(newPocemon);
     }
     // TODO: Throw exception?
@@ -108,4 +109,25 @@ void Player::displayTeam()
     {
         pocemon.displayInfo();
     }
+}
+
+
+void Player::setPreppedPocemon(const int &i)
+{
+	if (i >= pocemonTeam.size() || i < 0) {
+		throw "Selected index is higher than team size";
+	}
+
+	preppedPocemonIndex = i;
+	
+}
+
+
+void Player::deployPreppedPocemon()
+{
+	if (preppedPocemonIndex >= 0 && preppedPocemonIndex < pocemonTeam.size())
+	{
+		setActivePocemon(preppedPocemonIndex);
+		preppedPocemonIndex = -1;
+	}
 }

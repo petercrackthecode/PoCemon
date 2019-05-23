@@ -12,22 +12,27 @@ class Widget : public sf::Transformable, public sf::Drawable
 {
 public:
     Widget() : mParent{ nullptr } {};
+	Widget(Widget *parent) : mParent{ parent } {}
 	virtual ~Widget() {};
 
 	virtual sf::Vector2f getSize() const { return sf::Vector2f(0, 0); };
 
-    void attachChild(Widget* child);
-    Widget* detachChild(const Widget& node);
+    virtual void attachChild(Widget* child);
+    virtual Widget* detachChild(const Widget& node);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-protected:
+	virtual bool processEvent(const sf::Event &event, const sf::Vector2f &parentPos) { return false; };
+	virtual void processEvents(const sf::Vector2f &parentPos) {};
+
+	virtual bool update(const float &dt);
+
     Widget* mParent;
     std::vector<Widget*> mChildren;
 
-	virtual bool processEvent(const sf::Event &event, const sf::Vector2f &parentPos) { return false; };
-	virtual void processEvents(const sf::Vector2f &parentPos) {};
+protected:
 	virtual void updateShape();
+	virtual bool updateSelf(const float &dt) { return false; };
 };
 
 

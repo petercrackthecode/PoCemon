@@ -14,17 +14,25 @@ public:
     virtual void update(const float dt);
     virtual void handleInput();
 
-
-
 private:
     void startBattle();
 
     sf::View mView;
     sf::Sprite mBackground;
+	sf::Sprite mLogo;
 	sf::Text mPlaceholderText;
-	std::string mPlaceholderString = "This is the menu. Press spacebar to start a battle.\nThen enter the player names in the console window (cin/cout)";
-    Player mP1;
-    Player mP2;
+	std::string mPlaceholderString = "Enter your name:";
+
+	sf::Text mP1Prompt;
+	std::string mP1Name = "";
+	sf::Text mP1Text;
+	bool mP1Done = false;
+
+	sf::Text mP2Prompt;
+	std::string mP2Name = "";
+	sf::Text mP2Text;
+
+		
 
 };
 

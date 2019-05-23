@@ -33,14 +33,13 @@ public:
 	int getPower() const { return power; }
 
     virtual float getDmgMultiplier(Pocemon &defender) const;
-    // Change to protected/private:
     static const float dmgMultTbl[][19];
 
 protected:
-    const AbilityId id; // TODO: Change to AbilityId
+    const AbilityId id;
     const std::string name;
     const std::string description;
-    const std::string devDescription; // Just saving a description for us to reference.
+    const std::string devDescription;
     const Type type;
     const AbilityCategory abilityCategory;
 
@@ -49,26 +48,6 @@ protected:
     const int maxPP;
     const int statusEffectChance;
     const StatusEffect statusEffectType;
-
-    //struct AbilityData
-    //{
-    //    const AbilityId id;
-    //    const std::string name;
-    //    const std::string description;
-    //    //const std::string devDescription; // Just saving a description for us to reference.
-    //    const Type type;
-    //    const AbilityCategory abilityCategory;
-
-    //    const int power;
-    //    const int accuracy;
-    //    const int maxPP;
-    //    const int statusEffectChance;
-    //    const StatusEffect statusEffectType;
-    //};
-
-    //const static AbilityData allAbilityData[165];
-
-
 };
 
 #endif

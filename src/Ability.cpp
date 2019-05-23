@@ -5,8 +5,8 @@
 float Ability::getDmgMultiplier(Pocemon &defender) const
 {
     int atkTypeInt = static_cast<int>(this->type);
-    int defenderType1Int = static_cast<int>(defender.type1);
-    int defenderType2Int = static_cast<int>(defender.type2);
+    int defenderType1Int = static_cast<int>(defender.getType1());
+    int defenderType2Int = static_cast<int>(defender.getType2());
 
     float dmgMultiplier = dmgMultTbl[atkTypeInt][defenderType1Int];
     dmgMultiplier = dmgMultiplier * dmgMultTbl[atkTypeInt][defenderType2Int];

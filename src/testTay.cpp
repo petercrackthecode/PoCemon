@@ -52,7 +52,8 @@ void tay()
     Player p1(p1Name);
     Player p2(p2Name);
 
-    Battle b(p1, p1);
+    Battle b;
+	b.set(&p1, &p1);
 
 
     p1.generateRandomTeam();
@@ -250,7 +251,8 @@ void tayGraphicsAndBattleTest()
     Player p1(p1Name);
     Player p2(p2Name);
 
-    Battle b(p1, p2);
+    Battle b;
+	b.set(&p1, &p2);
 
     p1.generateRandomTeam();
     p2.generateRandomTeam();
